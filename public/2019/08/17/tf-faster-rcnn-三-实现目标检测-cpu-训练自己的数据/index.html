@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"kingkey.club","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="在前两篇博客中我们分别配置了环境和进行了demo的测试,接下来我们训练自己的图像数据并进行检测.">
+<meta name="keywords" content="tf faster-rcnn,目标检测,深度学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tf Faster-Rcnn(三)实现目标检测(cpu)训练自己的数据">
+<meta property="og:url" content="http://kingkey.club/2019/08/17/tf-faster-rcnn-三-实现目标检测-cpu-训练自己的数据/index.html">
+<meta property="og:site_name" content="King-Key">
+<meta property="og:description" content="在前两篇博客中我们分别配置了环境和进行了demo的测试,接下来我们训练自己的图像数据并进行检测.">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20181228160926475.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0tpbmdfa2V5,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20181228162049732.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0tpbmdfa2V5,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2020-06-27T10:19:47.914Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Tf Faster-Rcnn(三)实现目标检测(cpu)训练自己的数据">
+<meta name="twitter:description" content="在前两篇博客中我们分别配置了环境和进行了demo的测试,接下来我们训练自己的图像数据并进行检测.">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20181228160926475.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0tpbmdfa2V5,size_16,color_FFFFFF,t_70">
+
+<link rel="canonical" href="http://kingkey.club/2019/08/17/tf-faster-rcnn-三-实现目标检测-cpu-训练自己的数据/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Tf Faster-Rcnn(三)实现目标检测(cpu)训练自己的数据 | King-Key</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">King-Key</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">不掉发的程序爱好者</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://kingkey.club/2019/08/17/tf-faster-rcnn-三-实现目标检测-cpu-训练自己的数据/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="King-Key">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="King-Key">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Tf Faster-Rcnn(三)实现目标检测(cpu)训练自己的数据
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-08-17 22:28:22" itemprop="dateCreated datePublished" datetime="2019-08-17T22:28:22+08:00">2019-08-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-06-27 18:19:47" itemprop="dateModified" datetime="2020-06-27T18:19:47+08:00">2020-06-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机视觉/" itemprop="url" rel="index"><span itemprop="name">计算机视觉</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span><br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>4.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>4 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <blockquote>
+<p>在前两篇博客中我们分别<a href="https://blog.csdn.net/King_key/article/details/84781608" target="_blank" rel="noopener">配置了环境</a>和进行了<a href="https://blog.csdn.net/King_key/article/details/84900581" target="_blank" rel="noopener">demo的测试</a>,接下来我们训练自己的图像数据并进行检测.</p>
+</blockquote>
+<a id="more"></a>
+
+<h3 id="制作数据集"><a href="#制作数据集" class="headerlink" title="制作数据集"></a>制作数据集</h3><p>我们采用VOC2007的数据模板,进行数据制作</p>
+<ul>
+<li><p>VOC2007数据文件图:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">VOC2007</span><br><span class="line">├── Annotations    #图像标签文件,是.xml格式</span><br><span class="line">├── ImageSets   </span><br><span class="line">│   ├── Layout</span><br><span class="line">│   ├── Main    #训练和测试用到的数据文件</span><br><span class="line">│   └── Segmentation</span><br><span class="line">└── JPEGImages   #图像文件</span><br><span class="line"><span class="meta">#</span><span class="bash">Layout和Segmentation文件在这里不需要</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>采用<a href="https://github.com/tzutalin/labelImg" target="_blank" rel="noopener">labelimg</a>进行图像标记.可以<a href="https://pan.baidu.com/s/1t3usWCqnkgN7NtGyvNVPCw" target="_blank" rel="noopener">下载</a>,直接运行可能会出现错误,先根据项目网址中的提示安装依赖文件,再运行.</p>
+<ol>
+<li><p>修改data/predefined_classes.txt文件,改成自己的类名.</p>
+</li>
+<li><p>运行程序,界面如下图所示:</p>
+</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/20181228160926475.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0tpbmdfa2V5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">    </p>
+<ol start="3">
+<li><p>点击Change Save Dir修改标签文件的保存目录.</p>
+</li>
+<li><p>点击Open Dir ,打开图片路径.</p>
+</li>
+<li><p>点击图片进行标注,如下图:</p>
+</li>
+</ol>
+<p><img src="https://img-blog.csdnimg.cn/20181228162049732.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L0tpbmdfa2V5,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>详细的使用可以参考网上的其他说明.至此,标签数据我们已经做好.我们将制作的数据按照VOC2007的格式进行放入.</p>
+<ol start="6">
+<li>生成训练,测试数据.在这里,我们利用代码来生成:</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">import random</span><br><span class="line"></span><br><span class="line">def _main():</span><br><span class="line">    trainval_percent = 0.5</span><br><span class="line">  train_percent = 0.5</span><br><span class="line">    xmlfilepath = 'Annotations'</span><br><span class="line">    total_xml = os.listdir(xmlfilepath)</span><br><span class="line"></span><br><span class="line">    num = len(total_xml)</span><br><span class="line">    list = range(num)</span><br><span class="line">    tv = int(num * trainval_percent)</span><br><span class="line">  tr = int(tv * train_percent)</span><br><span class="line">    trainval = random.sample(list, tv)</span><br><span class="line">    train = random.sample(trainval, tr)</span><br><span class="line"></span><br><span class="line">    ftrainval = open('ImageSets/Main/trainval.txt', 'w')</span><br><span class="line">  ftest = open('ImageSets/Main/test.txt', 'w')</span><br><span class="line">    ftrain = open('ImageSets/Main/train.txt', 'w')</span><br><span class="line">    fval = open('ImageSets/Main/val.txt', 'w')</span><br><span class="line"></span><br><span class="line">     for i in list:</span><br><span class="line">        name = total_xml[i][:-4] + '\n'</span><br><span class="line">        if i in trainval:</span><br><span class="line">            ftrainval.write(name)</span><br><span class="line">            if i in train:</span><br><span class="line">                ftest.write(name)</span><br><span class="line">            else:</span><br><span class="line">                fval.write(name)</span><br><span class="line">        else:</span><br><span class="line">            ftrain.write(name)</span><br><span class="line">    ftrainval.close()</span><br><span class="line">    ftrain.close()</span><br><span class="line">    fval.close()</span><br><span class="line">    ftest.close()</span><br><span class="line">    </span><br><span class="line">if __name__ == '__main__':</span><br><span class="line">    _main()</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<ol start="7">
+<li><p>将程序文件放在VOC2007文件夹下(本人是按照这个路径进行编写的),其中trainval_percent与 train_percent可以根据需要修改,随后执行,会生成四个文件:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/ImageSets/Main$ tree</span><br><span class="line">.</span><br><span class="line">├── test.txt</span><br><span class="line">├── train.txt</span><br><span class="line">├── trainval.txt</span><br><span class="line">└── val.txt</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<ol start="8">
+<li><p>在VOC数据中,对图像的像素比例有一定的要求,因此我们将图像进行修改.代码如下:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import cv2</span><br><span class="line">import os</span><br><span class="line"></span><br><span class="line">   file_path='./JPEGImages/'</span><br><span class="line">   for filename in os.listdir(file_path):</span><br><span class="line"></span><br><span class="line">    print(filename)</span><br><span class="line">    img=cv2.imread(file_path+filename)</span><br><span class="line">  </span><br><span class="line">   size=cv2.resize(img,(500,375))</span><br><span class="line">   cv2.imwrite(file_path+filename,size)</span><br><span class="line">   if img is not None:</span><br><span class="line">   	continue</span><br></pre></td></tr></table></figure>
+
+<p>现在,我们自己的数据集总算是完成了,将制作好的数据集与原先的数据进行替换,就可以开始训练自己的模型了.</p>
+</li>
+</ol>
+<h3 id="训练自己的数据模型"><a href="#训练自己的数据模型" class="headerlink" title="训练自己的数据模型"></a>训练自己的数据模型</h3><ul>
+<li><p>在lib/pascal_voc.py文件中,修改类别参数</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">self._classes = (<span class="string">'__background__'</span>,  <span class="comment"># always index 0</span></span><br><span class="line">                 <span class="string">'#自己的类名'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在train_faster_rcnn.sh和test_faster_rcnn.sh修改</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ITEMS=<span class="comment">#自己设置,本人设置为10000</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在项目根目录下执行</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./experiments/scripts/train_faster_rcnn.sh 0 pascal_voc_0712 res101</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>此时会生成:</p>
+  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">output #生成的训练模型</span><br><span class="line">└── res101</span><br><span class="line">    ├── voc_2007_test</span><br><span class="line">    │   └── default</span><br><span class="line">    │       └── res101_faster_rcnn_iter_100</span><br><span class="line">    │           ├── detections.pkl</span><br><span class="line">    │           ├── license_pr.pkl</span><br><span class="line">    │           └── _pr.pkl</span><br><span class="line">    └── voc_2007_trainval+voc_2012_trainval</span><br><span class="line">        └── default</span><br><span class="line">            ├── checkpoint</span><br><span class="line">            ├── res101_faster_rcnn_iter_10000.ckpt.data-00000-of-00001</span><br><span class="line">            ├── res101_faster_rcnn_iter_10000.ckpt.index</span><br><span class="line">            ├── res101_faster_rcnn_iter_10000.ckpt.meta</span><br><span class="line">            ├── res101_faster_rcnn_iter_10000.pkl</span><br><span class="line"></span><br><span class="line">tensorboard #可视化文件,可利用命令tensorboard --logdir=tensorborad/res101进行可视化观察</span><br><span class="line">└── res101</span><br><span class="line">    └── voc_2007_trainval+voc_2012_trainval</span><br><span class="line">        ├── default</span><br><span class="line">        │   ├── events.out.tfevents.1545706608.guo-ThinkPad-E550</span><br><span class="line">        │   ├── events.out.tfevents.1545711447.guo-ThinkPad-E550</span><br><span class="line">        │   ├── events.out.tfevents.1545732554.guo-ThinkPad-E550</span><br><span class="line">        │   └── events.out.tfevents.1545818970.guo-ThinkPad-E550</span><br><span class="line">        └── default_val</span><br><span class="line">            ├── events.out.tfevents.1545706693.guo-ThinkPad-E550</span><br><span class="line">            ├── events.out.tfevents.1545711504.guo-ThinkPad-E550</span><br><span class="line">            ├── events.out.tfevents.1545732622.guo-ThinkPad-E550</span><br><span class="line">            └── events.out.tfevents.1545819033.guo-ThinkPad-E550</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="然后-就是测试了"><a href="#然后-就是测试了" class="headerlink" title="然后,就是测试了"></a>然后,就是测试了</h3><p>修改demo.py</p>
+<ul>
+<li><p>修改类名</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CLASSES = (<span class="string">'__background__'</span>,</span><br><span class="line">           <span class="string">'#自己的类'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改模型</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NETS = &#123;<span class="string">'vgg16'</span>: (<span class="string">'vgg16_faster_rcnn_iter_70000.ckpt'</span>,),<span class="string">'res101'</span>: (<span class="string">'res101_faster_rcnn_iter_10000.ckpt'</span>,)&#125;<span class="comment">#其中的10000,是我自己的训练设置,个人要根据自己的设置修改,一定要和初始设置的参数一致</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改测试图片<br>原文是:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">im_names=[<span class="string">'#demo中图片的名称'</span>]</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>本人进行了修改,遍历文件夹下所有的图片进行读取,修改代码如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">im_path=<span class="string">'#图片文件的路径'</span></span><br><span class="line">im_names = os.listdir(im_path)</span><br><span class="line"><span class="comment">#这里的im_path是以项目的根路径进行设置的,此时如果你读取的不是demo或者demo下的文件夹,那就需要再修改一处</span></span><br><span class="line"><span class="comment">#im_file = os.path.join(cfg.DATA_DIR, 'demo', image_name)其中的demo就要根据自己的进行修改</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>执行测试,执行命令<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./tools/demo.py</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>在这里,如果图片太多,或者不想显示的时候,可以进行结果的保存,添加一行代码,如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">demo(sess,net,im_name)</span><br><span class="line">plt.savefig(<span class="string">'./../data/demo-show/'</span>+im_name)</span><br><span class="line"><span class="comment">#前面是路径,demo-show文件需要自己创建,也是以项目的根路径进行设置的</span></span><br><span class="line"><span class="comment">#im_name是图片原本的名称,所以在保存的时候,如果还是在测试图片的文件下进行保存,会被覆盖</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="最后-就是小小的庆祝一下-总算是完成了…"><a href="#最后-就是小小的庆祝一下-总算是完成了…" class="headerlink" title="最后,就是小小的庆祝一下,总算是完成了…"></a>最后,就是小小的庆祝一下,总算是完成了…</h3><p>这是本人自己的记录,其中可能遇到和大家不一样的问题,的如果有什么疑问,可以下方留言讨论!!!!</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/tf-faster-rcnn/" rel="tag"># tf faster-rcnn</a>
+              <a href="/tags/目标检测/" rel="tag"># 目标检测</a>
+              <a href="/tags/深度学习/" rel="tag"># 深度学习</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/08/17/tf-faster-rcnn-二-实现目标检测-cpu-模型测试/" rel="prev" title="Tf Faster-Rcnn(二)实现目标检测(cpu)模型测试">
+      <i class="fa fa-chevron-left"></i> Tf Faster-Rcnn(二)实现目标检测(cpu)模型测试
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/08/19/pkl文件读取/" rel="next" title=".Pkl文件文件读取">
+      .Pkl文件文件读取 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#制作数据集"><span class="nav-number">1.</span> <span class="nav-text">制作数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#训练自己的数据模型"><span class="nav-number">2.</span> <span class="nav-text">训练自己的数据模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#然后-就是测试了"><span class="nav-number">3.</span> <span class="nav-text">然后,就是测试了</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最后-就是小小的庆祝一下-总算是完成了…"><span class="nav-number">4.</span> <span class="nav-text">最后,就是小小的庆祝一下,总算是完成了…</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="King-Key"
+      src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">King-Key</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">King-Key</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">16k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">14 分钟</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  <script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+<script data-pjax>
+document.querySelectorAll('.pdfobject-container').forEach(element => {
+  let url = element.dataset.target;
+  let pdfOpenParams = {
+    navpanes : 0,
+    toolbar  : 0,
+    statusbar: 0,
+    pagemode : 'thumbs',
+    view     : 'FitH'
+  };
+  let pdfOpenFragment = '#' + Object.entries(pdfOpenParams).map(([key, value]) => `${key}=${encodeURIComponent(value)}`).join('&');
+  let fullURL = `/lib/pdf/web/viewer.html?file=${encodeURIComponent(url)}${pdfOpenFragment}`;
+
+  if (NexT.utils.supportsPDFs()) {
+    element.innerHTML = `<embed class="pdfobject" src="${url + pdfOpenFragment}" type="application/pdf" style="height: ${element.dataset.height};">`;
+  } else {
+    element.innerHTML = `<iframe src="${fullURL}" style="height: ${element.dataset.height};" frameborder="0"></iframe>`;
+  }
+});
+</script>
+
+
+<script data-pjax>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme    : 'dark',
+      logLevel : 3,
+      flowchart: { curve     : 'linear' },
+      gantt    : { axisFormat: '%m/%d/%Y' },
+      sequence : { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
+
+
+    <div id="pjax">
+  
+
+  
+
+  
+  <script src="//cdn.jsdelivr.net/npm/quicklink@1/dist/quicklink.umd.js"></script>
+  <script>
+      window.addEventListener('load', () => {
+      quicklink({
+        timeout : 3000,
+        priority: true,
+        ignores : [uri => uri.includes('#'),uri => uri === 'http://kingkey.club/2019/08/17/tf-faster-rcnn-三-实现目标检测-cpu-训练自己的数据/',]
+      });
+      });
+  </script>
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '30843e2d01813d1cba7c',
+      clientSecret: '9fa10208e4feac37ff8323d52864e2a0af4a1c5b',
+      repo        : 'gitalk',
+      owner       : 'King-Key',
+      admin       : ['King-Key'],
+      id          : '8f043b15a4b9711c126bd6059c9c0929',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
+
+    </div>
+</body>
+</html>

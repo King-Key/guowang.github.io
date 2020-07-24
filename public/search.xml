@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[/Usr/lib/cnf-Update-Db:notfound]]></title>
+    <url>%2F2020%2F07%2F01%2Fusr-lib-cnf-update-db-notfound%2F</url>
+    <content type="text"><![CDATA[Ubuntu系统apt update```报错123456789&lt;!--more--&gt;#### 问题描述```powershellsudo apt update 终端执行之后，出现下面的报错信息 123456dpkg:警告:无法找到软件包"xxx"的文件名列表文件sh: 1: /usr/lib/cnf-update-db: not found正在读取软件包列表... 完成E: Problem executing scripts APT::Update::Post-Invoke-Success 'if /usr/bin/test -w /var/lib/command-not-found/ -a -e /usr/lib/cnf-update-db; then /usr/lib/cnf-update-db &gt; /dev/null; fi'E: Sub-process returned an error code 解决方案1、网上的参考方案，没有解决问题 123456789sudo mv /var/lib/dpkg/info /var/lib/dpkg/info_oldsudo mkdir /var/lib/dpkg/infosudo apt update &amp;&amp; apt -f install sudo apt -f install sudo mv /var/lib/dpkg/info/* /var/lib/dpkg/info_oldsudo rm -rf /var/lib/dpkg/info sudo mv /var/lib/dpkg/info_sudo mv /var/lib/dpkg/info_old /var/lib/dpkg/infosudo apt update 2、这是解决问题的方法 1sudo apt-get --reinstall install `dpkg --get-selections | grep '[[:space:]]install' | cut -f1`]]></content>
+      <categories>
+        <category>经验</category>
+      </categories>
+      <tags>
+        <tag>经验</tag>
+        <tag>Ubuntu更新报错</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Ubuntu进入initramfs]]></title>
+    <url>%2F2020%2F07%2F01%2Fubuntu%E8%BF%9B%E5%85%A5initramfs%2F</url>
+    <content type="text"><![CDATA[Ubuntu系统开机进入initramfs，可能是因为不正常的关闭系统造成的问题 解决方案1、重启系统，进入Ubuntu(高级选项)，修复模式（recovery mode）2、执行命令123fsck -t ext4 /dev/sda4// 后面的/dev/sda4是进入recovery mode后，系统会提示哪个磁盘出现问题，选择相应的即可 3、全选“yes”，最后重启即可]]></content>
+      <categories>
+        <category>经验</category>
+      </categories>
+      <tags>
+        <tag>经验</tag>
+        <tag>ubuntu</tag>
+        <tag>系统错误</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[数据集整理]]></title>
+    <url>%2F2019%2F11%2F01%2F%E6%95%B0%E6%8D%AE%E9%9B%86%E6%95%B4%E7%90%86%2F</url>
+    <content type="text"><![CDATA[整理一份可供下载的数据集地址（持续更新ing） 1. 自动驾驶领域 KITTI Oxford RobotCar Udacity Baidu Apolloscapes Cityscape Dataset Waymo CVPR 2018 WAD视频分段挑战赛数据集 Berkeley DeepDrive BDD100k Comma.ai LISA 2. 图像分类数据集 MNIST ImageNet COCO PASCAL VOC CIFAR Open Image Youtube-8M 3. 目标检测数据集 Pascal VOC 此处提供一个百度网盘链接: https://pan.baidu.com/s/1w4B63OlS7I38hrNx6ZcQTw 密码: sllv COCO 4. 语义分割 CamVid PascalVOC 2012 NYUDv2 Cityscapes Sun-RGBD MS COCO ADE20K]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Pyinstaller打包程序]]></title>
+    <url>%2F2019%2F10%2F05%2FPyinstaller%E6%89%93%E5%8C%85%E7%A8%8B%E5%BA%8F%2F</url>
+    <content type="text"><![CDATA[写好程序后，利用Pyinstaller将程序打包为可执行文件 安装Pyinstaller1pip install pyinstaller 程序打包进入程序的根目录下，单个程序文件的话，执行 1234pyinstaller -F *.py#-F :将程序打包为一个文件# *.py是指程序文件名 这样打包出来的程序文件有一个问题，就是特别的大，因为在打包的时候将所有的包都打包进取了，不可取！ 利用pipenv进行程序打包 安装pipenv 1pip install pipenv 创建虚拟环境，可以指定python版本 1pipenv install 启动环境 1pipenv shell 安装需要的依赖，如pyinstaller 1pipenv install pyinstaller 此时可以利用pip list查看环境中python的依赖，比较干净了，此时就可以利用pyinstaller进行打包了 1pyinstaller -F *.py 然后就会发现此时的程序文件会小很多，具体的pipenv和pyinstaller用法，可以参考官网！！！]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Pyinstaller</tag>
+        <tag>.exe</tag>
+        <tag>程序打包</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Python使用Kivy进行Android开发]]></title>
+    <url>%2F2019%2F10%2F03%2FPython%E4%BD%BF%E7%94%A8Kivy%E8%BF%9B%E8%A1%8CAndroid%E5%BC%80%E5%8F%91%2F</url>
+    <content type="text"><![CDATA[Python作为一种万能语言，有什么不能“盘”的。今天利用Kivy使用Python进行Android开发，写一个”Hello world”程序。 安装相应的软件 kivy：编写程序的包文件 1sudo pip install kivy buildozer：用来编译生成APP文件 1sudo pip install buildozer openjdk-8-jdk 1sudo apt-get install openjdk-8-jdk 编写一个简单的”hello world”程序 首先创建一个main.py文件 123456from kivy.app import Appclass HelloAPP(App):truepassif __name__ == '__main__':trueHelloAPP().run() 创建一个hello.kv文件 12Label:truetext:&apos;hello world!&apos; 执行测试 本地执行：文件目录下执行python main.py,显示如下 生成APP文件执行 1234#首先在文件目录下执行buildozer init #执行下面这句时，因为要下载一些东西，所以会比较慢buildozer android debug deplay run]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Kivy</tag>
+        <tag>Android开发</tag>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[好玩的在线应用程序]]></title>
+    <url>%2F2019%2F09%2F19%2F%E5%A5%BD%E7%8E%A9%E7%9A%84%E5%9C%A8%E7%BA%BF%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%2F</url>
+    <content type="text"><![CDATA[整理搜集的一些好玩的在线应用程序，属于比较前沿的技术demo。 1. “神笔马良”作者：NVIDIA demo链接：http://nvidia-research-mingyuliu.com/gaugan/ 2. “猫狗转换”作者：NVIDIA demo链接：http://nvidia-research-mingyuliu.com/petswap/ 3. “一键修图”作者：NVIDIA demo链接：]]></content>
+      <categories>
+        <category>计算机视觉</category>
+      </categories>
+      <tags>
+        <tag>在线应用</tag>
+        <tag>前沿技术</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Ubuntu18.04搭建GPU环境]]></title>
+    <url>%2F2019%2F09%2F12%2FUbuntu18-04%E6%90%AD%E5%BB%BAGPU%E7%8E%AF%E5%A2%83%2F</url>
+    <content type="text"><![CDATA[Ubuntu18.04下配置TensorFlow-gpu环境 关于GPU的环境配置已经不是第一次了，Ubuntu上或是在Windows上，但是每次都会遇到各种各样的问题。好吧，其实环境配置的步骤都差不多，在这里我之说明在安装过程中主要遇到的问题。 环境电脑：dell G7系列 系统：Ubuntu18.04 驱动：NVIDIA 435 CUDA：10.1 CUDNN：7.6 TensorFLow-gpu：1.14 安装 驱动安装，可以使用Ubuntu系统自带的”软件和更新”-&gt;”附加驱动”进行安装。 然后就是CUDA安装，也是按照正常的安装命令进行安装就可以。 CUDNN复制拷进cuda的安装目录 最后tensorflow安装 1pip install tensorflow-gpu 问题最大的问题就是安全启动选项的问题，不知道是不是dell系统的设置问题。 windows系统的启动必须设置安全启动选项，但是在ubuntu系统下，设置了安全启动选项后，无法与NVIDIA驱动进行通信，这是遇到的最大问题。目前每次切换系统都需要县设置安全启动选项，这就很难受了。]]></content>
+      <categories>
+        <category>经验</category>
+      </categories>
+      <tags>
+        <tag>Ubuntu18.04</tag>
+        <tag>TensorFlow-gpu</tag>
+        <tag>经验</tag>
+        <tag>环境配置</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Windows10搭建GPU环境1]]></title>
+    <url>%2F2019%2F09%2F06%2FWindows10%E6%90%AD%E5%BB%BAGPU%E7%8E%AF%E5%A2%83%2F</url>
+    <content type="text"><![CDATA[关于在Windows10下配置TensorFlow-gpu的环境总结 1. 写在前面以前用习惯了Ubuntu，突然换回Windows还真有点不习惯，也是第一次在Windows下配置相关的环境 安装参考：https://www.cnblogs.com/wanyu416/p/9536853.html 配置参考：https://blog.csdn.net/oMoDao1/article/details/83241074 2. 说明 安装过程参考上面的链接就可以，写的很全，也很详细，尤其是在系统中关于变量的添加 在最后安装TensorFlow的gpu的时候，一定要看好自己对应的版本，按照版本添加，不能直接使用pip安装]]></content>
+      <categories>
+        <category>经验</category>
+      </categories>
+      <tags>
+        <tag>TensorFlow-gpu</tag>
+        <tag>经验</tag>
+        <tag>环境配置</tag>
+        <tag>Windows10</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Itchat获取群聊用户的信息]]></title>
+    <url>%2F2019%2F08%2F23%2Fitchat-1%2F</url>
+    <content type="text"><![CDATA[itchat是一个非常好玩的Python扩展包，是基于微信的一个开放接口 1. 安装itchat1pip install itchat python扩展包的安装太简单了，就只需要一行命令就可以解决 2. 利用itchat获取群聊好友的信息直接上代码，代码里面会有相关的注释的 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748#!/usr/bin/env python# -*- coding: utf-8 -*-# @Date : 2019-08-22 17:30:40# @Author : WangGuo# @GitHub : https://github.com/King-Key# @Blog : https://blog.csdn.net/King_key# @Emeil : guo_wang_113@163.comimport osimport sysimport xlsxwriterimport itchat,timefrom itchat.content import TEXT #其中hotReload=True参数是为了短暂记忆登录状态，避免每登录一次就扫一次二维码itchat.auto_login(hotReload=True)#获取群聊信息roomslist = itchat.get_chatrooms(update=True)#插入excel#创建excel表单workbook=xlsxwriter.Workbook("群聊用户名单.xlsx")for i in range(0,len(roomslist)-1): #根据群聊名称在表单中创建工作薄 worksheet=workbook.add_worksheet(roomslist[i]['NickName']) #添加表头 worksheet.write(0,0,"微信名称") worksheet.write(0,1,"群备注") #获取群聊用户列表 myroom=itchat.search_chatrooms(name=roomslist[i]['NickName']) #获取群聊名称 gsp=itchat.update_chatroom(myroom[0]['UserName'], detailedMember=True) print("群名：&#123;&#125; \t 人数：&#123;&#125;".format(roomslist[i]['NickName'],len(gsp['MemberList']))) nickname=[] displayname=[] for c in gsp['MemberList']: nickname.append(c['NickName']) displayname.append(c['DisplayName']) #将用户信息写入相应的工作薄中 for x in range(len(gsp['MemberList'])): worksheet.write(x+1,0,nickname[x]) worksheet.write(x+1,1,displayname[x]) #输出一点提示信息 print("sheet &#123;&#125; finished".format(roomslist[i]['NickName']))#关闭工作表workbook.close() 3. 中间出现的问题 有的微信号无法登录 好像说是新申请的无法登录，可以试试能否登录网页版微信，能登录网页版微信就可以登录itchat，反之一样 群聊显示不全 这里的群聊默认是只显示已经保存在通讯录里面的群聊]]></content>
+      <categories>
+        <category>itchat</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>itchat</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Hexo 提交报错]]></title>
+    <url>%2F2019%2F08%2F22%2Fhexo%E6%8A%A5%E9%94%99%2F</url>
+    <content type="text"><![CDATA[hexo在编译的时候报错TypeError: Cannot read property ‘count’ of undefined 报错的具体信息12345678910111213141516FATAL Something's wrong. Maybe you can find the solution here: https://hexo.io/docs/troubleshooting.htmlTypeError: Cannot read property 'count' of undefined at Hexo.module.exports (/home/guo/Work/hexo/node_modules/hexo-baidu-url-submit/lib/generator.js:4:41) at Hexo.tryCatcher (/home/guo/Work/hexo/node_modules/bluebird/js/release/util.js:16:23) at Hexo.&lt;anonymous&gt; (/home/guo/Work/hexo/node_modules/bluebird/js/release/method.js:15:34) at /home/guo/Work/hexo/node_modules/hexo/lib/hexo/index.js:318:20 at tryCatcher (/home/guo/Work/hexo/node_modules/bluebird/js/release/util.js:16:23) at MappingPromiseArray._promiseFulfilled (/home/guo/Work/hexo/node_modules/bluebird/js/release/map.js:61:38) at MappingPromiseArray.PromiseArray._iterate (/home/guo/Work/hexo/node_modules/bluebird/js/release/promise_array.js:114:31) at MappingPromiseArray.init (/home/guo/Work/hexo/node_modules/bluebird/js/release/promise_array.js:78:10) at MappingPromiseArray._asyncInit (/home/guo/Work/hexo/node_modules/bluebird/js/release/map.js:30:10) at _drainQueueStep (/home/guo/Work/hexo/node_modules/bluebird/js/release/async.js:142:12) at _drainQueue (/home/guo/Work/hexo/node_modules/bluebird/js/release/async.js:131:9) at Async._drainQueues (/home/guo/Work/hexo/node_modules/bluebird/js/release/async.js:147:5) at Immediate.Async.drainQueues [as _onImmediate] (/home/guo/Work/hexo/node_modules/bluebird/js/release/async.js:17:14) at processImmediate (internal/timers.js:439:21) 解决方法是删除123```shellnpm remove hexo-baidu-url-submit然后清除配置，重新编译提交就可以了 123hexo cleanhexo ghexo d]]></content>
+      <categories>
+        <category>经验</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>Next</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[用Python画丘比特之心]]></title>
+    <url>%2F2019%2F08%2F22%2F%E7%94%A8Python%E7%94%BB%E4%B8%98%E6%AF%94%E7%89%B9%E4%B9%8B%E5%BF%83%2F</url>
+    <content type="text"><![CDATA[Python语言真的是无所不能，作为一种程序语言，也有属于自己的浪漫，今天，我们用Python来画一个丘比特之心，向你喜欢的人展现程序员的浪漫！ 1. 需要的扩展包12TurtlePyGame ```是一个很好用的绘图扩展，可以去通过指令控制坐标点的移动。[官网链接]([http://www.pythonturtle.org](http://www.pythonturtle.org/)) 这个是我们今天需要用到的工具123456789- ``` PyGame```是``` Python```里面的游戏扩展包，可以用来写游戏，不过这次我们用这个来添加背景音乐#### 2. 安装Python下的安装就只需要一条命令就可以解决，很是方便```shellpip install turtlepip install pygame 3.重头戏：画心话不多说，上代码 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091#!/usr/bin/env python# -*- coding: utf-8 -*-# @Date : 2019-08-11 21:34:13# @Author : WangGuo# @GitHub : https://github.com/King-Key# @Blog : https://blog.csdn.net/King_key# @Emeil : guo_wang_113@163.comimport turtleimport timeimport pygame#添加音乐def add_music(path):truepygame.mixer.init()truetrack = pygame.mixer.music.load(path)truepygame.mixer.music.play()truetime.sleep(2)# 画心形圆弧def hart_arc():truefor i in range(200):truetrueturtle.right(1)truetrueturtle.forward(2)def move_pen_position(x, y):trueturtle.hideturtle()trueturtle.up() #提起画笔trueturtle.goto(x, y) #修改落点trueturtle.down() #放下画笔trueturtle.showturtle()#心def love(self_x,self_y,self_left):trueturtle.setup(width=900, height=600) #控制起始位置trueturtle.color('red', 'pink')trueturtle.pensize(5)trueturtle.speed(50)true# 初始化画笔起始坐标truemove_pen_position(x=self_x,y=self_y)trueturtle.left(self_left)trueturtle.begin_fill()true# 画心形直线（ 左下方 ）trueturtle.forward(224)true# 画爱心圆弧truehart_arc()trueturtle.left(120)truehart_arc()true# 画心形直线（ 右下方 ）trueturtle.forward(224)trueturtle.end_fill()#文字def text(txt,x,y,color,):truemove_pen_position(x,y)trueturtle.hideturtle()trueturtle.color(color, 'pink')trueturtle.write(txt, font=('Arial', 30, 'bold'), align="center")#箭def arrow():trueturtle.pencolor('red') #控制颜色trueturtle.pensize(20) #控制画笔大小trueturtle.speed(20) #控制速度truemove_pen_position(x=-400,y=-80)trueturtle.right(205)trueturtle.forward(850)truemove_pen_position(x=410,y=155)trueturtle.right(45)trueturtle.forward(25)trueturtle.right(90)trueturtle.forward(25)truemove_pen_position(x=660,y=-130)if __name__ == '__main__':truepath="用Python画丘比特之心/咱们结婚吧-齐晨.mp3"trueadd_music(path)truelove(self_x=170,self_y=-140,self_left=140)truelove(self_x=-170,self_y=-200,self_left=280)truetext('老婆',180,90,'#CD5C5C')truetext('老公',-160,20,'red')truearrow()true# 点击窗口关闭程序truewindow = turtle.Screen()truewindow.exitonclick() turtle的用法并不难，不过却很方便，具体的函数可以去官网上看看 最后给大家看一下效果图,当然图片里面是听不到音乐的了]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>心</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[.Pkl文件文件读取]]></title>
+    <url>%2F2019%2F08%2F19%2Fpkl%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%2F</url>
+    <content type="text"><![CDATA[.pkl文件是Python的文件格式 1. 根据网上查阅的读取方法12345import picklefile=open(&quot;./dataset-cornell-length10-filter1-vocabSize40000.pkl&quot;,&quot;rb&quot;)data=pickle.load(file)print(data)file.close() 在这里，注意在读取的使用的是”rb”,也就是二进制文件格式，而”r”是普通格式的读取 用print输出结果显示是这样的 。。。。。。。好吧，全是数字，这怎么看呢 2. 再来看看第二种1234567import pickleimport pprintfile=open(&quot;./dataset-cornell-length10-filter1-vocabSize40000.pkl&quot;,&quot;rb&quot;)data=pickle.load(file)pprint.pprint(data)file.close() 好吧，读取的方式是一样的，但是显示出来的是不一样的，看看显示 明显这个才是我们可以的认识的，恩，就是这样]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>pkl</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Tf Faster-Rcnn(三)实现目标检测(cpu)训练自己的数据]]></title>
+    <url>%2F2019%2F08%2F17%2Ftf-faster-rcnn-%E4%B8%89-%E5%AE%9E%E7%8E%B0%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B-cpu-%E8%AE%AD%E7%BB%83%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%2F</url>
+    <content type="text"><![CDATA[在前两篇博客中我们分别配置了环境和进行了demo的测试,接下来我们训练自己的图像数据并进行检测. 制作数据集我们采用VOC2007的数据模板,进行数据制作 VOC2007数据文件图: 12345678VOC2007├── Annotations #图像标签文件,是.xml格式├── ImageSets │ ├── Layout│ ├── Main #训练和测试用到的数据文件│ └── Segmentation└── JPEGImages #图像文件#Layout和Segmentation文件在这里不需要 采用labelimg进行图像标记.可以下载,直接运行可能会出现错误,先根据项目网址中的提示安装依赖文件,再运行. 修改data/predefined_classes.txt文件,改成自己的类名. 运行程序,界面如下图所示: 点击Change Save Dir修改标签文件的保存目录. 点击Open Dir ,打开图片路径. 点击图片进行标注,如下图: 详细的使用可以参考网上的其他说明.至此,标签数据我们已经做好.我们将制作的数据按照VOC2007的格式进行放入. 生成训练,测试数据.在这里,我们利用代码来生成: 1234567891011121314151617181920212223242526272829303132333435363738import osimport randomdef _main(): trainval_percent = 0.5 train_percent = 0.5 xmlfilepath = 'Annotations' total_xml = os.listdir(xmlfilepath) num = len(total_xml) list = range(num) tv = int(num * trainval_percent) tr = int(tv * train_percent) trainval = random.sample(list, tv) train = random.sample(trainval, tr) ftrainval = open('ImageSets/Main/trainval.txt', 'w') ftest = open('ImageSets/Main/test.txt', 'w') ftrain = open('ImageSets/Main/train.txt', 'w') fval = open('ImageSets/Main/val.txt', 'w') for i in list: name = total_xml[i][:-4] + '\n' if i in trainval: ftrainval.write(name) if i in train: ftest.write(name) else: fval.write(name) else: ftrain.write(name) ftrainval.close() ftrain.close() fval.close() ftest.close() if __name__ == '__main__': _main() 将程序文件放在VOC2007文件夹下(本人是按照这个路径进行编写的),其中trainval_percent与 train_percent可以根据需要修改,随后执行,会生成四个文件: 123456/ImageSets/Main$ tree.├── test.txt├── train.txt├── trainval.txt└── val.txt 在VOC数据中,对图像的像素比例有一定的要求,因此我们将图像进行修改.代码如下: 12345678910111213import cv2import os file_path='./JPEGImages/' for filename in os.listdir(file_path): print(filename) img=cv2.imread(file_path+filename) size=cv2.resize(img,(500,375)) cv2.imwrite(file_path+filename,size) if img is not None: continue 现在,我们自己的数据集总算是完成了,将制作好的数据集与原先的数据进行替换,就可以开始训练自己的模型了. 训练自己的数据模型 在lib/pascal_voc.py文件中,修改类别参数 12self._classes = ('__background__', # always index 0 '#自己的类名') 在train_faster_rcnn.sh和test_faster_rcnn.sh修改 1ITEMS=#自己设置,本人设置为10000 在项目根目录下执行 1./experiments/scripts/train_faster_rcnn.sh 0 pascal_voc_0712 res101 此时会生成: 1234567891011121314151617181920212223242526272829output #生成的训练模型└── res101 ├── voc_2007_test │ └── default │ └── res101_faster_rcnn_iter_100 │ ├── detections.pkl │ ├── license_pr.pkl │ └── _pr.pkl └── voc_2007_trainval+voc_2012_trainval └── default ├── checkpoint ├── res101_faster_rcnn_iter_10000.ckpt.data-00000-of-00001 ├── res101_faster_rcnn_iter_10000.ckpt.index ├── res101_faster_rcnn_iter_10000.ckpt.meta ├── res101_faster_rcnn_iter_10000.pkltensorboard #可视化文件,可利用命令tensorboard --logdir=tensorborad/res101进行可视化观察└── res101 └── voc_2007_trainval+voc_2012_trainval ├── default │ ├── events.out.tfevents.1545706608.guo-ThinkPad-E550 │ ├── events.out.tfevents.1545711447.guo-ThinkPad-E550 │ ├── events.out.tfevents.1545732554.guo-ThinkPad-E550 │ └── events.out.tfevents.1545818970.guo-ThinkPad-E550 └── default_val ├── events.out.tfevents.1545706693.guo-ThinkPad-E550 ├── events.out.tfevents.1545711504.guo-ThinkPad-E550 ├── events.out.tfevents.1545732622.guo-ThinkPad-E550 └── events.out.tfevents.1545819033.guo-ThinkPad-E550 然后,就是测试了修改demo.py 修改类名 12CLASSES = ('__background__', '#自己的类') 修改模型 1NETS = &#123;'vgg16': ('vgg16_faster_rcnn_iter_70000.ckpt',),'res101': ('res101_faster_rcnn_iter_10000.ckpt',)&#125;#其中的10000,是我自己的训练设置,个人要根据自己的设置修改,一定要和初始设置的参数一致 修改测试图片原文是: 1im_names=['#demo中图片的名称'] 本人进行了修改,遍历文件夹下所有的图片进行读取,修改代码如下 1234im_path='#图片文件的路径'im_names = os.listdir(im_path)#这里的im_path是以项目的根路径进行设置的,此时如果你读取的不是demo或者demo下的文件夹,那就需要再修改一处#im_file = os.path.join(cfg.DATA_DIR, 'demo', image_name)其中的demo就要根据自己的进行修改 执行测试,执行命令1./tools/demo.py 在这里,如果图片太多,或者不想显示的时候,可以进行结果的保存,添加一行代码,如下: 1234demo(sess,net,im_name)plt.savefig('./../data/demo-show/'+im_name)#前面是路径,demo-show文件需要自己创建,也是以项目的根路径进行设置的#im_name是图片原本的名称,所以在保存的时候,如果还是在测试图片的文件下进行保存,会被覆盖 最后,就是小小的庆祝一下,总算是完成了…这是本人自己的记录,其中可能遇到和大家不一样的问题,的如果有什么疑问,可以下方留言讨论!!!!]]></content>
+      <categories>
+        <category>计算机视觉</category>
+      </categories>
+      <tags>
+        <tag>tf faster-rcnn</tag>
+        <tag>目标检测</tag>
+        <tag>深度学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Tf Faster-Rcnn(二)实现目标检测(cpu)模型测试]]></title>
+    <url>%2F2019%2F08%2F17%2Ftf-faster-rcnn-%E4%BA%8C-%E5%AE%9E%E7%8E%B0%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B-cpu-%E6%A8%A1%E5%9E%8B%E6%B5%8B%E8%AF%95%2F</url>
+    <content type="text"><![CDATA[继CPU下运行demo之后，现在开始使用res101进行voc数据的训练 (1)在tf-faster-rcnn根目录下，执行： 123456NET=res101TRAIN_IMDB=voc_2007_trainval+voc_2012_trainvalmkdir -p output/$&#123;NET&#125;/$&#123;TRAIN_IMDB&#125;cd output/$&#123;NET&#125;/$&#123;TRAIN_IMDB&#125;ln -s ../../../data/voc_2007_trainval+voc_2012_trainval ./defaultcd ../../.. (2)下载res101模型，并建立软连接 123456mkdir -p data/imagenet_weightscd data/imagenet_weightswget -v http://download.tensorflow.org/models/resnet_v1_101_2016_08_28.tar.gztar -xzvf resnet_v1_101_2016_08_28.tar.gzmv resnet_v1_101.ckpt res101.ckptcd ../.. (3)下载voc数据集（提取码: 3a8y），并修改名称 1mv VOCdevkit VOCdevkit2007 (4)运行（运行的参数中是GPU运行的参数设置，但是在经过第一次的修改后，为gpu_id参数设置为0的话，也是可以运行的） 1./experiments/scripts/test_faster_rcnn.sh 0 pascal_voc_0712 res101]]></content>
+      <categories>
+        <category>计算机视觉</category>
+      </categories>
+      <tags>
+        <tag>tf faster-rcnn</tag>
+        <tag>目标检测</tag>
+        <tag>深度学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Tf Faster-Rcnn(一)实现目标检测(cpu)项目环境配置]]></title>
+    <url>%2F2019%2F08%2F17%2Ftf-faster-rcnn-%E4%B8%80-%E5%AE%9E%E7%8E%B0%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B-cpu-%E9%A1%B9%E7%9B%AE%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE%2F</url>
+    <content type="text"><![CDATA[系统环境说明：Ubuntu18.04 下载项目 1git clone https://github.com/endernewton/tf-faster-rcnn.git 编译,配置相应的运行环境 安装Cpython (这里相应的模块需要根据个人平时的使用下载，有很多的本人电脑已经存在，便没有一一列举出来) 1sudo apt-get install cpython 修改项目，改为cpu运行 【1】打开lib-&gt;model-&gt;config.py,查看第236行(本人的)，实际修改是将__C.USE_GPU_NMS的値由True修改为False.作用：禁用gpu,使用cpu进行计算 【2】打开lib-&gt;model-&gt;nms_wrapper.py，进行注释，第12行 【3】打开lib-&gt;setup.py，进行注释，第55行，第120-136行 进入项目的lib目录中执行 1make 12345678 - 安装Python COCO API,使用coco数据集 ```shell cd data git clone https://github.com/pdollar/coco.git cd coco/PythonAPI make 运行demo和训练 下载预训练模型voc_0712_80k-110k.tgz放在data文件目录下，解压. 建立训练模型的软连接,data文件目录下进行 123456NET=res101TRAIN_IMDB=voc_2007_trainval+voc_2012_trainvalmkdir -p output/$&#123;NET&#125;/$&#123;TRAIN_IMDB&#125;cd output/$&#123;NET&#125;/$&#123;TRAIN_IMDB&#125;ln -s ../../../voc_2007_trainval+voc_2012_trainval ./defaultcd ../../.. 运行demo data目录文件下 1../tools/demo.py]]></content>
+      <categories>
+        <category>计算机视觉</category>
+      </categories>
+      <tags>
+        <tag>tf faster-rcnn</tag>
+        <tag>目标检测</tag>
+        <tag>深度学习</tag>
+      </tags>
+  </entry>
+</search>
