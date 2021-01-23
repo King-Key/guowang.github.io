@@ -6,7 +6,7 @@
   <link href="http://king-key.github.io/atom.xml" rel="self"/>
   
   <link href="http://king-key.github.io/"/>
-  <updated>2021-01-22T21:24:29.759Z</updated>
+  <updated>2021-01-23T15:09:09.952Z</updated>
   <id>http://king-key.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mingyin</title>
+    <link href="http://king-key.github.io/2021/01/23/mingyin/"/>
+    <id>http://king-key.github.io/2021/01/23/mingyin/</id>
+    <published>2021-01-23T15:07:31.000Z</published>
+    <updated>2021-01-23T15:09:09.952Z</updated>
+    
+    <content type="html"><![CDATA[<p>随风流 明音</p><p>一曲长歌不愿醒，仙鹤白鹿入梦来。<br>清音袅袅尽留人，伴我青衫泪垂帘。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;随风流 明音&lt;/p&gt;
+&lt;p&gt;一曲长歌不愿醒，仙鹤白鹿入梦来。&lt;br&gt;清音袅袅尽留人，伴我青衫泪垂帘。&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Ubuntu20美化及DeepLearning配置</title>
