@@ -6,7 +6,7 @@
   <link href="http://king-key.github.io/atom.xml" rel="self"/>
   
   <link href="http://king-key.github.io/"/>
-  <updated>2021-05-09T16:09:14.542Z</updated>
+  <updated>2021-08-02T16:34:32.634Z</updated>
   <id>http://king-key.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hello-ros</title>
+    <link href="http://king-key.github.io/2021/07/25/hello-ros/"/>
+    <id>http://king-key.github.io/2021/07/25/hello-ros/</id>
+    <published>2021-07-25T01:04:32.000Z</published>
+    <updated>2021-08-02T16:34:32.634Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote><p>ros里面的“hello world”</p></blockquote><a id="more"></a><h4 id="1、基本概念"><a href="#1、基本概念" class="headerlink" title="1、基本概念"></a>1、基本概念</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">workspace    //工作空间</span><br><span class="line">   |- src      //代码空间，ros功能的源代码</span><br><span class="line">   |- build    //编译空间，编译出来的缓存文件和中间文件</span><br><span class="line">   |- devel    //可执行文件</span><br><span class="line">   |- install  //安装文件</span><br></pre></td></tr></table></figure><h5 id="创建工作空间"><a href="#创建工作空间" class="headerlink" title="创建工作空间"></a>创建工作空间</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p catkin_ws/src</span><br><span class="line">cd catkin_ws/src</span><br><span class="line">catkin_init_workspace</span><br></pre></td></tr></table></figure><h5 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd catkin_ws</span><br><span class="line">catkin_make</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;ros里面的“hello world”&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    
+    <category term="ros" scheme="http://king-key.github.io/tags/ros/"/>
+    
+  </entry>
   
   <entry>
     <title>darknet安装配置</title>
