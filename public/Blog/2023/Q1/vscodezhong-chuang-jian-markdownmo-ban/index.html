@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        
+            
+        
+
+      <title></title>
+
+      
+      <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+      <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+      
+
+      <!-- CSS -->
+      
+      <link rel="stylesheet" href="https://king-key.github.io/book.css">
+      <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+        
+
+      <script>
+          document.addEventListener('DOMContentLoaded', function () {
+            var menu = document.getElementById('navMenu');
+            var toggleButton = document.getElementById('toggleMenu');
+
+            toggleButton.addEventListener('click', function () {
+                menu.classList.toggle('active');
+            });
+        });
+
+      </script>
+
+
+      
+      
+    </head>
+
+    <body>
+        <div class="menu">
+            <div class="card">
+                <div class="card-border-top"></div>
+                <div class="img"></div>
+                <span> Wang Guo</span>
+                <p class="job"> <a class="link" href="https://qingkelab.github.io">青稞社区</a>创始人 </p>
+                <center><img src="https://img.shields.io/badge/MBTI性格类型-INTJ(独立自主的专家)-blue" width="70%"></img></center><br>
+              
+                <div class="radio-inputs">
+                        <label>
+                            <a class="link"  href="/主页/">
+                            <i class="bi bi-person-rolodex"></i>
+                            </a>
+                        </label>
+
+                        <label>
+                            <a cla  ss="link" href="https://github.com/King-Key">
+                            <i class="bi-github"></i>
+                            </a>
+                        </label>
+
+                        <label>
+                            <a class="link"  href="https://blog.csdn.net/King_key?type=blog">
+                            <i class="bi bi-body-text"></i>
+                            </a>
+                        </label>
+
+                        <label>
+                            <a class="link"  href="https://twitter.com/KingKey113">
+                            <i class="bi bi-twitter"></i>
+                            </a>
+                        </label>
+
+                </div><br>
+            
+
+
+              <nav role="navigation">
+                <ul>
+                    
+                        
+                        
+                            
+                            <li >
+                                
+                                <a href="https://king-key.github.io/主页/">
+                                    
+                                    <!--  -->
+                                    <i class="bi bi-bookmarks"></i>
+                                    About
+
+                                </a>
+                                
+                            <!-- </li><hr align=center color=#8b8b8b8 size=4> -->
+                        
+                            
+                            <li >
+                                
+                                <a href="https://king-key.github.io/Blog/">
+                                    
+                                    <!--  -->
+                                    <i class="bi bi-bookmarks"></i>
+                                    Blog
+
+                                </a>
+                                
+                            <!-- </li><hr align=center color=#8b8b8b8 size=4> -->
+                        
+                            
+                            <li >
+                                
+                                <a href="https://king-key.github.io/随笔/">
+                                    
+                                    <!--  -->
+                                    <i class="bi bi-bookmarks"></i>
+                                    随笔
+
+                                </a>
+                                
+                            <!-- </li><hr align=center color=#8b8b8b8 size=4> -->
+                        
+                            
+                            <li >
+                                
+                                <a href="https://king-key.github.io/友情链接/">
+                                    
+                                    <!--  -->
+                                    <i class="bi bi-bookmarks"></i>
+                                    links
+
+                                </a>
+                                
+                            <!-- </li><hr align=center color=#8b8b8b8 size=4> -->
+                        
+                    
+                </ul>
+            </nav>
+
+            </div>
+            
+            
+        </div>
+
+        <div class="page">
+            <div class="page__header">
+                <div class="menu-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                
+                <span class="search-icon">🔎</span>
+                
+            </div>
+
+            <div class="page__content">
+                
+                <div class="search-container">
+                    <input id="search" type="search" placeholder="Search..">
+                    <div class="search-results">
+                        <div class="search-results__header"></div>
+                        <ul class="search-results__items"></ul>
+                    </div>
+                </div>
+                
+                <div class="book-content">
+                    
+    <h1>VScode中创建markdown模板 </h1>
+    ● ⏰︎<i> Push time：2023-02-16 16:02:18</i>
+    <hr align=center color=#987cb9 size=4>
+    
+    <!-- 引入目录 -->
+    <div class="sidebar" id="sidebar">
+        <ul id="toc"></ul>
+    </div>
+
+
+    <div class="content">
+        <blockquote>
+<p>利用代码片段快速生成特定信息</p>
+</blockquote>
+<h4 id="1-vscodezhong-xin-jian-yong-hu-dai-ma-pian-duan">1、vscode中新建“用户代码片段”</h4>
+<ul>
+<li>打开“<strong>code</strong>“ - “<strong>首选项</strong>” - “<strong>配置用户代码片段</strong>”</li>
+</ul>
+<p><img src="https://king-key.github.io/Blog/2023/Q1/vscodezhong-chuang-jian-markdownmo-ban/./WechatIMG52.png" alt="" /></p>
+<ul>
+<li>“<strong>新建全局代码片段文件</strong>”，文件名可随意</li>
+</ul>
+<p><img src="https://king-key.github.io/Blog/2023/Q1/vscodezhong-chuang-jian-markdownmo-ban/./WechatIMG53.png" alt="" /></p>
+<h4 id="2-chuang-jian-zi-ding-yi-xin-xi">2、创建自定义信息</h4>
+<ul>
+<li>文件默认信息是这样的</li>
+</ul>
+<pre data-lang="shell" style="background-color:#eff1f5;color:#4f5b66;" class="language-shell "><code class="language-shell" data-lang="shell"><span>{
+</span><span>	// Place your 全局 snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+</span><span>	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+</span><span>	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+</span><span>	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+</span><span>	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+</span><span>	// Placeholders with the same ids are connected.
+</span><span>	// Example:
+</span><span>	// &quot;Print to console&quot;: {
+</span><span>	// 	&quot;scope&quot;: &quot;javascript,typescript&quot;,
+</span><span>	// 	&quot;prefix&quot;: &quot;log&quot;,
+</span><span>	// 	&quot;body&quot;: [
+</span><span>	// 		&quot;console.log(&#39;$1&#39;);&quot;,
+</span><span>	// 		&quot;$2&quot;
+</span><span>	// 	],
+</span><span>	// 	&quot;description&quot;: &quot;Log output to console&quot;
+</span><span>	// }
+</span><span>}
+</span></code></pre>
+<ul>
+<li>参数说明</li>
+</ul>
+<pre data-lang="shell" style="background-color:#eff1f5;color:#4f5b66;" class="language-shell "><code class="language-shell" data-lang="shell"><span>scope: 文件类型
+</span><span>prefix: 表示触发条件
+</span><span>body: 表示显示的内容
+</span><span>description: 代码片段的描述
+</span></code></pre>
+<ul>
+<li>修改后的文件是这样的</li>
+</ul>
+<pre data-lang="shell" style="background-color:#eff1f5;color:#4f5b66;" class="language-shell "><code class="language-shell" data-lang="shell"><span>{
+</span><span>	// Place your 全局 snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+</span><span>	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+</span><span>	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+</span><span>	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+</span><span>	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+</span><span>	// Placeholders with the same ids are connected.
+</span><span>	// Example:
+</span><span>	&quot;Print to console&quot;: {
+</span><span>		&quot;scope&quot;: &quot;markdown&quot;,
+</span><span>		&quot;prefix&quot;: &quot;/date&quot;,
+</span><span>		&quot;body&quot;: [
+</span><span>			&quot;---&quot;,
+</span><span>			&quot;title: ${TM_FILENAME_BASE}&quot;,
+</span><span>			&quot;top_img: &quot;,
+</span><span>			&quot;cover: &quot;,
+</span><span>			&quot;categories: ${TM_DIRECTORY}&quot;,
+</span><span>			&quot;abbrlink: &quot;,
+</span><span>			&quot;date: ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}  ${CURRENT_HOUR}:${CURRENT_MINUTE}:${CURRENT_SECOND} &quot;,
+</span><span>			&quot;tags:&quot;,
+</span><span>			&quot;---&quot;
+</span><span>		],
+</span><span>		&quot;description&quot;: &quot;blog info&quot;
+</span><span>	}
+</span><span>}
+</span></code></pre>
+<ul>
+<li>可以插入的<strong>变量</strong></li>
+</ul>
+<p><strong>使用规则：$name或${name:default}</strong></p>
+<pre data-lang="TM_SELECTED_TEXT 当前选中的文本或空字符串" style="background-color:#eff1f5;color:#4f5b66;" class="language-TM_SELECTED_TEXT 当前选中的文本或空字符串 "><code class="language-TM_SELECTED_TEXT 当前选中的文本或空字符串" data-lang="TM_SELECTED_TEXT 当前选中的文本或空字符串"><span>TM_CURRENT_LINE 当前行的内容
+</span><span>TM_CURRENT_WORD 光标下单词的内容或空字符串
+</span><span>TM_LINE_INDEX 基于零索引的行号
+</span><span>TM_LINE_NUMBER 基于一个索引的行号
+</span><span>TM_FILENAME 当前文档的文件名
+</span><span>TM_FILENAME_BASE 当前文档的文件名，不带扩展名
+</span><span>TM_DIRECTORY 当前文档的目录
+</span><span>TM_FILEPATH 当前文档的完整文件路径
+</span><span>RELATIVE_FILEPATH 当前文档的相对（相对于打开的工作区或文件夹）文件路径
+</span><span>CLIPBOARD 剪贴板的内容
+</span><span>WORKSPACE_NAME 打开的工作区或文件夹的名称
+</span><span>WORKSPACE_FOLDER 打开的工作区或文件夹的路径
+</span><span>
+</span><span>插入当前日期和时间：
+</span><span>
+</span><span>CURRENT_YEAR 本年度
+</span><span>CURRENT_YEAR_SHORT 当前年份的最后两位数字
+</span><span>CURRENT_MONTH 月份为两位数（例如“02”）
+</span><span>CURRENT_MONTH_NAME 月份的全名（例如“七月”）
+</span><span>CURRENT_MONTH_NAME_SHORT 月份的简称（例如“Jul”）
+</span><span>CURRENT_DATE 一个月中的哪一天
+</span><span>CURRENT_DAY_NAME 日期名称（例如“星期一”）
+</span><span>CURRENT_DAY_NAME_SHORT 一天的简称（例如“星期一”）
+</span><span>CURRENT_HOUR 24 小时制的当前小时
+</span><span>CURRENT_MINUTE 当前分钟
+</span><span>CURRENT_SECOND 当前秒
+</span><span>CURRENT_SECONDS_UNIX 自 Unix 纪元以来的秒数
+</span></code></pre>
+<h4 id="3-jie-guo-zhan-shi">3、结果展示</h4>
+<p><img src="https://king-key.github.io/Blog/2023/Q1/vscodezhong-chuang-jian-markdownmo-ban/./20220218.gif" alt="" /></p>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // 清空侧边栏目录列表
+            var headings = $('#toc').empty();
+            var count = 0;
+            $(document.body).find("h1, h2, h3, h4, h5, h6").each(function() {
+                var title = $(this).text();
+                var id = $(this).attr('id');
+                var listItem = '<li><a href="#' + id + '">' + title + '</a></li>';
+                
+                if (count >= 1) {
+                    headings.append(listItem);
+                }
+                count++; // 增加计数器
+            });
+
+            // 如果目录列表为空，则不显示侧边栏
+            if (headings.is(':empty')) {
+                $('#sidebar').hide(); // 隐藏侧边栏
+            } else {
+                // 如果目录不为空，添加目录标题并显示侧边栏
+                headings.prepend('<h2>文章目录</h2>');
+                $('#sidebar').show(); // 显示侧边栏
+            }
+        });
+    </script>
+
+    
+
+                </div>
+            </div>
+
+            <div id="gitalk-container"></div>
+            <script>    
+            const gitalk = new Gitalk({
+              clientID: 'f73599b3b06fe641455a', //'GitHub Application Client ID',
+              clientSecret: '99686ea14b4603409e0c159cfd4fad2afd87a1a5', //'GitHub Application Client Secret',
+              repo: 'King-Key.github.io',  //'GitHub repo',      // The repository of store comments,
+              owner: 'King-Key', //'GitHub repo owner',
+              admin: ['King-Key'], //['GitHub repo owner and collaborators, only these guys can initialize github issues'],
+              id: location.pathname,      // Ensure uniqueness and length less than 50
+              distractionFreeMode: false  // Facebook-like distraction free mode
+            })
+            gitalk.render('gitalk-container')
+            </script>
+
+            <div class="prev-link">
+                
+    
+        
+        
+        <a class="previous" href="https://king-key.github.io/Blog/2023/Q1/"><</a>
+    
+
+            </div>
+
+            <div class="next-link">
+                
+    
+        
+        
+        
+        
+            
+            
+            
+        
+            
+            
+            
+        
+            
+            
+            
+        
+            
+            
+            
+        
+    
+
+            </div>
+
+        </div>
+        
+        
+            
+            <script type="text/javascript" src="https://king-key.github.io/elasticlunr.min.js"></script>
+            <script type="text/javascript" src="https://king-key.github.io/search_index.en.js"></script>
+            
+            <script type="text/javascript" src="https://king-key.github.io/book.js"></script>
+        
+
+    </body>
+
+</html>

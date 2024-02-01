@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        
+            
+        
+
+      <title></title>
+
+      
+      <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+      <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+      
+
+      <!-- CSS -->
+      
+      <link rel="stylesheet" href="https://king-key.github.io/book.css">
+      <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+        
+
+      <script>
+          document.addEventListener('DOMContentLoaded', function () {
+            var menu = document.getElementById('navMenu');
+            var toggleButton = document.getElementById('toggleMenu');
+
+            toggleButton.addEventListener('click', function () {
+                menu.classList.toggle('active');
+            });
+        });
+
+      </script>
+
+
+      
+      
+    </head>
+
+    <body>
+        <div class="menu">
+            <div class="card">
+                <div class="card-border-top"></div>
+                <div class="img"></div>
+                <span> Wang Guo</span>
+                <p class="job"> <a class="link" href="https://qingkelab.github.io">青稞社区</a>创始人 </p>
+                <center><img src="https://img.shields.io/badge/MBTI性格类型-INTJ(独立自主的专家)-blue" width="70%"></img></center><br>
+              
+                <div class="radio-inputs">
+                        <label>
+                            <a class="link"  href="/主页/">
+                            <i class="bi bi-person-rolodex"></i>
+                            </a>
+                        </label>
+
+                        <label>
+                            <a cla  ss="link" href="https://github.com/King-Key">
+                            <i class="bi-github"></i>
+                            </a>
+                        </label>
+
+                        <label>
+                            <a class="link"  href="https://blog.csdn.net/King_key?type=blog">
+                            <i class="bi bi-body-text"></i>
+                            </a>
+                        </label>
+
+                        <label>
+                            <a class="link"  href="https://twitter.com/KingKey113">
+                            <i class="bi bi-twitter"></i>
+                            </a>
+                        </label>
+
+                </div><br>
+            
+
+
+              <nav role="navigation">
+                <ul>
+                    
+                        
+                        
+                            
+                            <li >
+                                
+                                <a href="https://king-key.github.io/主页/">
+                                    
+                                    <!--  -->
+                                    <i class="bi bi-bookmarks"></i>
+                                    About
+
+                                </a>
+                                
+                            <!-- </li><hr align=center color=#8b8b8b8 size=4> -->
+                        
+                            
+                            <li >
+                                
+                                <a href="https://king-key.github.io/Blog/">
+                                    
+                                    <!--  -->
+                                    <i class="bi bi-bookmarks"></i>
+                                    Blog
+
+                                </a>
+                                
+                            <!-- </li><hr align=center color=#8b8b8b8 size=4> -->
+                        
+                            
+                            <li >
+                                
+                                <a href="https://king-key.github.io/随笔/">
+                                    
+                                    <!--  -->
+                                    <i class="bi bi-bookmarks"></i>
+                                    随笔
+
+                                </a>
+                                
+                            <!-- </li><hr align=center color=#8b8b8b8 size=4> -->
+                        
+                            
+                            <li >
+                                
+                                <a href="https://king-key.github.io/友情链接/">
+                                    
+                                    <!--  -->
+                                    <i class="bi bi-bookmarks"></i>
+                                    links
+
+                                </a>
+                                
+                            <!-- </li><hr align=center color=#8b8b8b8 size=4> -->
+                        
+                    
+                </ul>
+            </nav>
+
+            </div>
+            
+            
+        </div>
+
+        <div class="page">
+            <div class="page__header">
+                <div class="menu-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                
+                <span class="search-icon">🔎</span>
+                
+            </div>
+
+            <div class="page__content">
+                
+                <div class="search-container">
+                    <input id="search" type="search" placeholder="Search..">
+                    <div class="search-results">
+                        <div class="search-results__header"></div>
+                        <ul class="search-results__items"></ul>
+                    </div>
+                </div>
+                
+                <div class="book-content">
+                    
+    <h1>itchat获取微信好友头像并进行矩形拼接 </h1>
+    ● ⏰︎<i> Push time：2022-07-30 12:07:14</i>
+    <hr align=center color=#987cb9 size=4>
+    
+    <!-- 引入目录 -->
+    <div class="sidebar" id="sidebar">
+        <ul id="toc"></ul>
+    </div>
+
+
+    <div class="content">
+        <blockquote>
+<p>不是所有的微信账号都可以登陆网页版微信的哦</p>
+</blockquote>
+<!--more-->
+<pre style="background-color:#eff1f5;color:#4f5b66;"><code><span>#coding:utf-8
+</span><span>#爬取微信好友头像并进行拼接
+</span><span>import itchat
+</span><span>import math
+</span><span>import PIL.Image as Image
+</span><span>import os
+</span><span>#登录
+</span><span>itchat.auto_login(True)
+</span><span>#获取好友信息
+</span><span>friends = itchat.get_friends(update=True)[0:]（当然你也可以进行输出，但是小编是看的头晕）
+</span><span>#获取好友头像并保存在目录文件夹下
+</span><span>num = 0
+</span><span>for friend in friends:
+</span><span>    image = itchat.get_head_img(userName=friend[&quot;UserName&quot;]) #用 itchat.get_head_img(userName=None)来爬取好友列表的头像
+</span><span>    fileImage = open(&quot;/home/guo/桌面/Work/chat/img/&quot; + &quot;/&quot; + str(num) + &quot;.jpg&quot;,&#39;wb&#39;) #将好友头像下载到本地文件夹
+</span><span>    fileImage.write(image)
+</span><span>    fileImage.close()
+</span><span>    num += 1
+</span><span>
+</span><span>#将微信图像进行拼接
+</span><span>dirs = os.listdir(&quot;/home/guo/桌面/Work/chat/img/&quot;)
+</span><span>each_size = int(math.sqrt(float(640*640)/len(dirs)))
+</span><span>line = int(640.0/each_size)
+</span><span>photographic = Image.new(&quot;RGB&quot;,(640,640))
+</span><span>x = 0
+</span><span>y = 0
+</span><span>for i in range(0,len(dirs)):
+</span><span>    try:
+</span><span>        imageOfFriends = Image.open(&quot;/home/guo/桌面/Work/chat/img/&quot; + &quot;/&quot; + str(i) + &quot;.jpg&quot;) #打开一张照片，PIL库的应用
+</span><span>    except IOError:
+</span><span>        print &quot;error&quot;
+</span><span>    else:
+</span><span>        image_resize = imageOfFriends.resize((each_size,each_size))
+</span><span>        photographic.paste(image_resize,(x*each_size,y*each_size))
+</span><span>        x += 1
+</span><span>        if x == line:
+</span><span>            x = 0
+</span><span>            y += 1
+</span><span>#保存图像，发送给文件助手，显示图像
+</span><span>photographic.save(&quot;~/all.jpg&quot;)
+</span><span>itchat.send_image(&quot;~/all.jpg&quot;,&quot;filehelper&quot;) #把图片发送给微信文件助手（filehelper
+</span><span>photographic.show()
+</span><span>
+</span><span>PYTHON
+</span></code></pre>
+<ul>
+<li>
+<blockquote>
+<p>最后的结果截图，小编就不上传了，但是代码绝对是可行的！！！</p>
+</blockquote>
+</li>
+</ul>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // 清空侧边栏目录列表
+            var headings = $('#toc').empty();
+            var count = 0;
+            $(document.body).find("h1, h2, h3, h4, h5, h6").each(function() {
+                var title = $(this).text();
+                var id = $(this).attr('id');
+                var listItem = '<li><a href="#' + id + '">' + title + '</a></li>';
+                
+                if (count >= 1) {
+                    headings.append(listItem);
+                }
+                count++; // 增加计数器
+            });
+
+            // 如果目录列表为空，则不显示侧边栏
+            if (headings.is(':empty')) {
+                $('#sidebar').hide(); // 隐藏侧边栏
+            } else {
+                // 如果目录不为空，添加目录标题并显示侧边栏
+                headings.prepend('<h2>文章目录</h2>');
+                $('#sidebar').show(); // 显示侧边栏
+            }
+        });
+    </script>
+
+    
+
+                </div>
+            </div>
+
+            <div id="gitalk-container"></div>
+            <script>    
+            const gitalk = new Gitalk({
+              clientID: 'f73599b3b06fe641455a', //'GitHub Application Client ID',
+              clientSecret: '99686ea14b4603409e0c159cfd4fad2afd87a1a5', //'GitHub Application Client Secret',
+              repo: 'King-Key.github.io',  //'GitHub repo',      // The repository of store comments,
+              owner: 'King-Key', //'GitHub repo owner',
+              admin: ['King-Key'], //['GitHub repo owner and collaborators, only these guys can initialize github issues'],
+              id: location.pathname,      // Ensure uniqueness and length less than 50
+              distractionFreeMode: false  // Facebook-like distraction free mode
+            })
+            gitalk.render('gitalk-container')
+            </script>
+
+            <div class="prev-link">
+                
+    
+        
+        
+        <a class="previous" href="https://king-key.github.io/Blog/2023/Q1/"><</a>
+    
+
+            </div>
+
+            <div class="next-link">
+                
+    
+        
+        
+        
+        
+            
+            
+            
+        
+            
+            
+            
+        
+            
+            
+            
+        
+            
+            
+            
+        
+    
+
+            </div>
+
+        </div>
+        
+        
+            
+            <script type="text/javascript" src="https://king-key.github.io/elasticlunr.min.js"></script>
+            <script type="text/javascript" src="https://king-key.github.io/search_index.en.js"></script>
+            
+            <script type="text/javascript" src="https://king-key.github.io/book.js"></script>
+        
+
+    </body>
+
+</html>

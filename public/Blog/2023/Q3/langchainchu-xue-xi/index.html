@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        
+            
+        
+
+      <title></title>
+
+      
+      <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+      <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+      
+
+      <!-- CSS -->
+      
+      <link rel="stylesheet" href="https://king-key.github.io/book.css">
+      <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+        
+
+      <script>
+          document.addEventListener('DOMContentLoaded', function () {
+            var menu = document.getElementById('navMenu');
+            var toggleButton = document.getElementById('toggleMenu');
+
+            toggleButton.addEventListener('click', function () {
+                menu.classList.toggle('active');
+            });
+        });
+
+      </script>
+
+
+      
+      
+    </head>
+
+    <body>
+        <div class="menu">
+            <div class="card">
+                <div class="card-border-top"></div>
+                <div class="img"></div>
+                <span> Wang Guo</span>
+                <p class="job"> <a class="link" href="https://qingkelab.github.io">青稞社区</a>创始人 </p>
+                <center><img src="https://img.shields.io/badge/MBTI性格类型-INTJ(独立自主的专家)-blue" width="70%"></img></center><br>
+              
+                <div class="radio-inputs">
+                        <label>
+                            <a class="link"  href="/主页/">
+                            <i class="bi bi-person-rolodex"></i>
+                            </a>
+                        </label>
+
+                        <label>
+                            <a cla  ss="link" href="https://github.com/King-Key">
+                            <i class="bi-github"></i>
+                            </a>
+                        </label>
+
+                        <label>
+                            <a class="link"  href="https://blog.csdn.net/King_key?type=blog">
+                            <i class="bi bi-body-text"></i>
+                            </a>
+                        </label>
+
+                        <label>
+                            <a class="link"  href="https://twitter.com/KingKey113">
+                            <i class="bi bi-twitter"></i>
+                            </a>
+                        </label>
+
+                </div><br>
+            
+
+
+              <nav role="navigation">
+                <ul>
+                    
+                        
+                        
+                            
+                            <li >
+                                
+                                <a href="https://king-key.github.io/主页/">
+                                    
+                                    <!--  -->
+                                    <i class="bi bi-bookmarks"></i>
+                                    About
+
+                                </a>
+                                
+                            <!-- </li><hr align=center color=#8b8b8b8 size=4> -->
+                        
+                            
+                            <li >
+                                
+                                <a href="https://king-key.github.io/Blog/">
+                                    
+                                    <!--  -->
+                                    <i class="bi bi-bookmarks"></i>
+                                    Blog
+
+                                </a>
+                                
+                            <!-- </li><hr align=center color=#8b8b8b8 size=4> -->
+                        
+                            
+                            <li >
+                                
+                                <a href="https://king-key.github.io/随笔/">
+                                    
+                                    <!--  -->
+                                    <i class="bi bi-bookmarks"></i>
+                                    随笔
+
+                                </a>
+                                
+                            <!-- </li><hr align=center color=#8b8b8b8 size=4> -->
+                        
+                            
+                            <li >
+                                
+                                <a href="https://king-key.github.io/友情链接/">
+                                    
+                                    <!--  -->
+                                    <i class="bi bi-bookmarks"></i>
+                                    links
+
+                                </a>
+                                
+                            <!-- </li><hr align=center color=#8b8b8b8 size=4> -->
+                        
+                    
+                </ul>
+            </nav>
+
+            </div>
+            
+            
+        </div>
+
+        <div class="page">
+            <div class="page__header">
+                <div class="menu-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                
+                <span class="search-icon">🔎</span>
+                
+            </div>
+
+            <div class="page__content">
+                
+                <div class="search-container">
+                    <input id="search" type="search" placeholder="Search..">
+                    <div class="search-results">
+                        <div class="search-results__header"></div>
+                        <ul class="search-results__items"></ul>
+                    </div>
+                </div>
+                
+                <div class="book-content">
+                    
+    <h1>🖋 langchain初学习 </h1>
+    ● ⏰︎<i> Push time：2023-07-17 15:07:54</i>
+    <hr align=center color=#987cb9 size=4>
+    
+    <!-- 引入目录 -->
+    <div class="sidebar" id="sidebar">
+        <ul id="toc"></ul>
+    </div>
+
+
+    <div class="content">
+        <blockquote>
+<p><a href="https://docs.langchain.com/docs/">LangChain</a> is a framework for developing applications powered by language models(LangChain是一个由语言模型驱动的应用程序开发框架，旨在帮助开发人员使用语言模型构建端到端的应用程序)</p>
+</blockquote>
+<h2 id="1-yi-xie-gai-nian">1、一些概念</h2>
+<h3 id="components-and-chains">Components and Chains</h3>
+<ul>
+<li>Component 是模块化的构建块，可以组合起来创建强大的应用程序。</li>
+<li>Chain 是组合在一起以完成特定任务的一系列 Components。一个 Chain 可能包括一个 Prompt 模板、一个语言模型和一个输出解析器，它们一起工作以处理用户输入、生成响应并处理输出。</li>
+</ul>
+<h3 id="prompt-templates-and-values">Prompt Templates and Values</h3>
+<ul>
+<li>Prompt Templates 负责创建 PromptValue，这是最终传递给语言模型的内容。有助于将用户输入和其他动态信息转换为适合语言模型的格式。</li>
+<li>PromptValues 是具有方法的类，这些方法可以转换为每个模型类型期望的确切输入类型（如文本或聊天消息）。</li>
+</ul>
+<h3 id="example-selectors">Example Selectors</h3>
+<ul>
+<li>可以在 Prompt 中动态包含示例，接受用户输入并返回一个示例列表以在提示中使用，使其更强大和特定于上下文。</li>
+</ul>
+<h3 id="output-parsers">Output Parsers</h3>
+<ul>
+<li>负责将语言模型响应构建为更有用的格式，使得在应用程序中处理输出数据变得更加容易。实现了两种主要方法：
+<ul>
+<li>一种用于提供格式化指令。</li>
+<li>一种用于将语言模型的响应解析为结构化格式。</li>
+</ul>
+</li>
+</ul>
+<h3 id="indexes-and-retrievers">Indexes and Retrievers</h3>
+<ul>
+<li>Index 是一种组织文档的方式，使语言模型更容易与它们交互。</li>
+<li>Retrievers 是用于获取相关文档并将它们与语言模型组合的接口。</li>
+</ul>
+<blockquote>
+<p>LangChain 提供了用于处理不同类型的索引和检索器的工具和功能，例如矢量数据库和文本拆分器。</p>
+</blockquote>
+<h3 id="chat-message-history">Chat Message History</h3>
+<ul>
+<li>主要通过聊天界面与语言模型进行交互。</li>
+</ul>
+<blockquote>
+<p>ChatMessageHistory 类负责记住所有以前的聊天交互数据，然后可以将这些交互数据传递回模型、汇总或以其他方式组合。这有助于维护上下文并提高模型对对话的理解。</p>
+</blockquote>
+<h3 id="agents-and-toolkits">Agents and Toolkits</h3>
+<ul>
+<li>Agent 是在 LangChain 中推动决策制定的实体。他们可以访问一套工具，并可以根据用户输入决定调用哪个工具。</li>
+<li>Tookits 是一组工具，当它们一起使用时，可以完成特定的任务。代理执行器负责使用适当的工具运行代理。</li>
+</ul>
+<h3 id="langchain-model">LangChain model</h3>
+<p>LangChain 中的模型主要分为三类</p>
+<ul>
+<li><strong>LLM（大型语言模型）</strong>：可以将文本字符串作为输入并返回文本字符串作为输出。</li>
+<li><strong>聊天模型( Chat Model)</strong> ：将聊天消息列表作为输入并返回聊天消息。用于管理对话历史记录和维护上下文。</li>
+<li><strong>文本嵌入模型(Text Embedding Models)</strong> ：将文本作为输入并返回表示文本嵌入的浮点列表。用于文档检索、聚类和相似性比较等任务。</li>
+</ul>
+<h2 id="2-an-zhuang">2、安装</h2>
+<p><code> pip install langchain</code> or <code>pip install langchain[all]</code> or <code>pip install langchain[llm]</code></p>
+<p><code>zsh</code> 安装需要使用 <code>pip install 'langchain[all]' </code></p>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // 清空侧边栏目录列表
+            var headings = $('#toc').empty();
+            var count = 0;
+            $(document.body).find("h1, h2, h3, h4, h5, h6").each(function() {
+                var title = $(this).text();
+                var id = $(this).attr('id');
+                var listItem = '<li><a href="#' + id + '">' + title + '</a></li>';
+                
+                if (count >= 1) {
+                    headings.append(listItem);
+                }
+                count++; // 增加计数器
+            });
+
+            // 如果目录列表为空，则不显示侧边栏
+            if (headings.is(':empty')) {
+                $('#sidebar').hide(); // 隐藏侧边栏
+            } else {
+                // 如果目录不为空，添加目录标题并显示侧边栏
+                headings.prepend('<h2>文章目录</h2>');
+                $('#sidebar').show(); // 显示侧边栏
+            }
+        });
+    </script>
+
+    
+
+                </div>
+            </div>
+
+            <div id="gitalk-container"></div>
+            <script>    
+            const gitalk = new Gitalk({
+              clientID: 'f73599b3b06fe641455a', //'GitHub Application Client ID',
+              clientSecret: '99686ea14b4603409e0c159cfd4fad2afd87a1a5', //'GitHub Application Client Secret',
+              repo: 'King-Key.github.io',  //'GitHub repo',      // The repository of store comments,
+              owner: 'King-Key', //'GitHub repo owner',
+              admin: ['King-Key'], //['GitHub repo owner and collaborators, only these guys can initialize github issues'],
+              id: location.pathname,      // Ensure uniqueness and length less than 50
+              distractionFreeMode: false  // Facebook-like distraction free mode
+            })
+            gitalk.render('gitalk-container')
+            </script>
+
+            <div class="prev-link">
+                
+    
+        
+        
+        <a class="previous" href="https://king-key.github.io/Blog/2023/Q3/"><</a>
+    
+
+            </div>
+
+            <div class="next-link">
+                
+    
+        
+        
+        
+        
+            
+            
+            
+        
+            
+            
+            
+        
+            
+            
+            
+        
+            
+            
+            
+        
+    
+
+            </div>
+
+        </div>
+        
+        
+            
+            <script type="text/javascript" src="https://king-key.github.io/elasticlunr.min.js"></script>
+            <script type="text/javascript" src="https://king-key.github.io/search_index.en.js"></script>
+            
+            <script type="text/javascript" src="https://king-key.github.io/book.js"></script>
+        
+
+    </body>
+
+</html>

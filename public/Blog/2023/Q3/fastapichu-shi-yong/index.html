@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        
+            
+        
+
+      <title></title>
+
+      
+      <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+      <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+      
+
+      <!-- CSS -->
+      
+      <link rel="stylesheet" href="https://king-key.github.io/book.css">
+      <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+        
+
+      <script>
+          document.addEventListener('DOMContentLoaded', function () {
+            var menu = document.getElementById('navMenu');
+            var toggleButton = document.getElementById('toggleMenu');
+
+            toggleButton.addEventListener('click', function () {
+                menu.classList.toggle('active');
+            });
+        });
+
+      </script>
+
+
+      
+      
+    </head>
+
+    <body>
+        <div class="menu">
+            <div class="card">
+                <div class="card-border-top"></div>
+                <div class="img"></div>
+                <span> Wang Guo</span>
+                <p class="job"> <a class="link" href="https://qingkelab.github.io">青稞社区</a>创始人 </p>
+                <center><img src="https://img.shields.io/badge/MBTI性格类型-INTJ(独立自主的专家)-blue" width="70%"></img></center><br>
+              
+                <div class="radio-inputs">
+                        <label>
+                            <a class="link"  href="/主页/">
+                            <i class="bi bi-person-rolodex"></i>
+                            </a>
+                        </label>
+
+                        <label>
+                            <a cla  ss="link" href="https://github.com/King-Key">
+                            <i class="bi-github"></i>
+                            </a>
+                        </label>
+
+                        <label>
+                            <a class="link"  href="https://blog.csdn.net/King_key?type=blog">
+                            <i class="bi bi-body-text"></i>
+                            </a>
+                        </label>
+
+                        <label>
+                            <a class="link"  href="https://twitter.com/KingKey113">
+                            <i class="bi bi-twitter"></i>
+                            </a>
+                        </label>
+
+                </div><br>
+            
+
+
+              <nav role="navigation">
+                <ul>
+                    
+                        
+                        
+                            
+                            <li >
+                                
+                                <a href="https://king-key.github.io/主页/">
+                                    
+                                    <!--  -->
+                                    <i class="bi bi-bookmarks"></i>
+                                    About
+
+                                </a>
+                                
+                            <!-- </li><hr align=center color=#8b8b8b8 size=4> -->
+                        
+                            
+                            <li >
+                                
+                                <a href="https://king-key.github.io/Blog/">
+                                    
+                                    <!--  -->
+                                    <i class="bi bi-bookmarks"></i>
+                                    Blog
+
+                                </a>
+                                
+                            <!-- </li><hr align=center color=#8b8b8b8 size=4> -->
+                        
+                            
+                            <li >
+                                
+                                <a href="https://king-key.github.io/随笔/">
+                                    
+                                    <!--  -->
+                                    <i class="bi bi-bookmarks"></i>
+                                    随笔
+
+                                </a>
+                                
+                            <!-- </li><hr align=center color=#8b8b8b8 size=4> -->
+                        
+                            
+                            <li >
+                                
+                                <a href="https://king-key.github.io/友情链接/">
+                                    
+                                    <!--  -->
+                                    <i class="bi bi-bookmarks"></i>
+                                    links
+
+                                </a>
+                                
+                            <!-- </li><hr align=center color=#8b8b8b8 size=4> -->
+                        
+                    
+                </ul>
+            </nav>
+
+            </div>
+            
+            
+        </div>
+
+        <div class="page">
+            <div class="page__header">
+                <div class="menu-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                
+                <span class="search-icon">🔎</span>
+                
+            </div>
+
+            <div class="page__content">
+                
+                <div class="search-container">
+                    <input id="search" type="search" placeholder="Search..">
+                    <div class="search-results">
+                        <div class="search-results__header"></div>
+                        <ul class="search-results__items"></ul>
+                    </div>
+                </div>
+                
+                <div class="book-content">
+                    
+    <h1>🖋 fastapi初使用 </h1>
+    ● ⏰︎<i> Push time：2023-07-10 07:07:28</i>
+    <hr align=center color=#987cb9 size=4>
+    
+    <!-- 引入目录 -->
+    <div class="sidebar" id="sidebar">
+        <ul id="toc"></ul>
+    </div>
+
+
+    <div class="content">
+        <blockquote>
+<p>fastapi 是一个基于 Python 的 API 构建框架，简单且易用！</p>
+</blockquote>
+<!--more-->
+<h4 id="1-an-zhuang">1、安装</h4>
+<p>安装，主要分为两部分：</p>
+<p>1）<code>fastapi</code>：<code> pip install fastapi</code></p>
+<p>2）<code>uvicorn</code>:<code> pip install uvicorn</code>。服务器端，可以用来运行fastapi的代码。</p>
+<p>也可以一起安装<code>pip install fastapi[all]</code></p>
+<h4 id="2-apishi-xian">2、api实现</h4>
+<pre data-lang="python" style="background-color:#eff1f5;color:#4f5b66;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#b48ead;">from </span><span>typing </span><span style="color:#b48ead;">import </span><span>Union
+</span><span style="color:#b48ead;">from </span><span>fastapi </span><span style="color:#b48ead;">import </span><span>FastAPI
+</span><span>
+</span><span>app = </span><span style="color:#bf616a;">FastAPI</span><span>()
+</span><span>
+</span><span>@app.</span><span style="color:#bf616a;">get</span><span>(&quot;</span><span style="color:#a3be8c;">/1</span><span>&quot;)
+</span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">read_root</span><span>():
+</span><span>    </span><span style="color:#b48ead;">return </span><span>(&quot;</span><span style="color:#a3be8c;">hello</span><span>&quot;)
+</span></code></pre>
+<h5 id="app-get-1"><code>app.get(&quot;/1)</code></h5>
+<p>api路径引入,也就是用 1 调用 read_root函数，最终返回一个 hello。
+<img src="https://king-key.github.io/Blog/2023/Q3/fastapichu-shi-yong/./image.png" alt="Alt text" /></p>
+<h5 id="app-get-a"><code>app.get(&quot;/{a})</code></h5>
+<pre data-lang="PYTHON" style="background-color:#eff1f5;color:#4f5b66;" class="language-PYTHON "><code class="language-PYTHON" data-lang="PYTHON"><span>@app.</span><span style="color:#bf616a;">get</span><span>(&quot;</span><span style="color:#a3be8c;">/</span><span style="color:#d08770;">{a}</span><span>&quot;)
+</span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">read_root</span><span>(</span><span style="color:#bf616a;">a</span><span>:int):
+</span><span>    </span><span style="color:#b48ead;">return </span><span>(&quot;</span><span style="color:#a3be8c;">hello</span><span>&quot;)
+</span></code></pre>
+<p>也可以输入值,当输入一个int型参数，调用 read_root函数，返回一个 hello。
+<img src="https://king-key.github.io/Blog/2023/Q3/fastapichu-shi-yong/./image1.png" alt="Alt text" /></p>
+<h5 id="app-get-a-b"><code>@app.get(&quot;/{a}+{b}&quot;)</code></h5>
+<pre data-lang="python" style="background-color:#eff1f5;color:#4f5b66;" class="language-python "><code class="language-python" data-lang="python"><span>@app.</span><span style="color:#bf616a;">get</span><span>(&quot;</span><span style="color:#a3be8c;">/</span><span style="color:#d08770;">{a}</span><span style="color:#a3be8c;">+</span><span style="color:#d08770;">{b}</span><span>&quot;)
+</span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">read_root</span><span>(</span><span style="color:#bf616a;">a</span><span>:int,</span><span style="color:#bf616a;">b</span><span>:int):
+</span><span>    </span><span style="color:#b48ead;">return </span><span>(a+b)
+</span></code></pre>
+<p>实现一个<code>a+b</code>的API。</p>
+<p><img src="https://king-key.github.io/Blog/2023/Q3/fastapichu-shi-yong/./image2.png" alt="Alt text" /></p>
+<h5 id="han-shu-he-apifen-chi">函数和api分离</h5>
+<p>不可能把所有的api函数都放在一个<code>.py</code>文件中，在<code>python</code>文件中可以通过<code>import</code>调用函数。</p>
+<ul>
+<li>
+<p><code>sum.py</code>,定义了一个<code>add</code>函数，实现<code>a+b</code></p>
+<pre data-lang="python" style="background-color:#eff1f5;color:#4f5b66;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">add</span><span>(</span><span style="color:#bf616a;">a</span><span>,</span><span style="color:#bf616a;">b</span><span>):
+</span><span>  </span><span style="color:#96b5b4;">print</span><span>(a+b)
+</span><span>  </span><span style="color:#b48ead;">return </span><span>a+b
+</span></code></pre>
+</li>
+<li>
+<p><code>main.py</code>,调用<code>add</code>函数</p>
+<pre data-lang="python" style="background-color:#eff1f5;color:#4f5b66;" class="language-python "><code class="language-python" data-lang="python"><span style="color:#b48ead;">from </span><span>typing </span><span style="color:#b48ead;">import </span><span>Union
+</span><span style="color:#b48ead;">from </span><span>fastapi </span><span style="color:#b48ead;">import </span><span>FastAPI
+</span><span>
+</span><span style="color:#b48ead;">from </span><span>num </span><span style="color:#b48ead;">import </span><span>add
+</span><span>
+</span><span>app = </span><span style="color:#bf616a;">FastAPI</span><span>()
+</span><span>
+</span><span>@app.</span><span style="color:#bf616a;">get</span><span>(&quot;</span><span style="color:#a3be8c;">/</span><span style="color:#d08770;">{a}</span><span style="color:#a3be8c;">+</span><span style="color:#d08770;">{b}</span><span>&quot;)
+</span><span style="color:#b48ead;">def </span><span style="color:#8fa1b3;">read_root</span><span>(</span><span style="color:#bf616a;">a</span><span>:int,</span><span style="color:#bf616a;">b</span><span>:int):
+</span><span>    </span><span style="color:#b48ead;">return </span><span style="color:#bf616a;">add</span><span>(a,b)
+</span></code></pre>
+<p><img src="https://king-key.github.io/Blog/2023/Q3/fastapichu-shi-yong/./image3.png" alt="Alt text" /></p>
+</li>
+</ul>
+<h4 id="3-yun-xing">3、运行</h4>
+<pre data-lang="shell" style="background-color:#eff1f5;color:#4f5b66;" class="language-shell "><code class="language-shell" data-lang="shell"><span>uvicorn main:app --reload
+</span></code></pre>
+<p>ok，结束！</p>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // 清空侧边栏目录列表
+            var headings = $('#toc').empty();
+            var count = 0;
+            $(document.body).find("h1, h2, h3, h4, h5, h6").each(function() {
+                var title = $(this).text();
+                var id = $(this).attr('id');
+                var listItem = '<li><a href="#' + id + '">' + title + '</a></li>';
+                
+                if (count >= 1) {
+                    headings.append(listItem);
+                }
+                count++; // 增加计数器
+            });
+
+            // 如果目录列表为空，则不显示侧边栏
+            if (headings.is(':empty')) {
+                $('#sidebar').hide(); // 隐藏侧边栏
+            } else {
+                // 如果目录不为空，添加目录标题并显示侧边栏
+                headings.prepend('<h2>文章目录</h2>');
+                $('#sidebar').show(); // 显示侧边栏
+            }
+        });
+    </script>
+
+    
+
+                </div>
+            </div>
+
+            <div id="gitalk-container"></div>
+            <script>    
+            const gitalk = new Gitalk({
+              clientID: 'f73599b3b06fe641455a', //'GitHub Application Client ID',
+              clientSecret: '99686ea14b4603409e0c159cfd4fad2afd87a1a5', //'GitHub Application Client Secret',
+              repo: 'King-Key.github.io',  //'GitHub repo',      // The repository of store comments,
+              owner: 'King-Key', //'GitHub repo owner',
+              admin: ['King-Key'], //['GitHub repo owner and collaborators, only these guys can initialize github issues'],
+              id: location.pathname,      // Ensure uniqueness and length less than 50
+              distractionFreeMode: false  // Facebook-like distraction free mode
+            })
+            gitalk.render('gitalk-container')
+            </script>
+
+            <div class="prev-link">
+                
+    
+        
+        
+        <a class="previous" href="https://king-key.github.io/Blog/2023/Q3/"><</a>
+    
+
+            </div>
+
+            <div class="next-link">
+                
+    
+        
+        
+        
+        
+            
+            
+            
+        
+            
+            
+            
+        
+            
+            
+            
+        
+            
+            
+            
+        
+    
+
+            </div>
+
+        </div>
+        
+        
+            
+            <script type="text/javascript" src="https://king-key.github.io/elasticlunr.min.js"></script>
+            <script type="text/javascript" src="https://king-key.github.io/search_index.en.js"></script>
+            
+            <script type="text/javascript" src="https://king-key.github.io/book.js"></script>
+        
+
+    </body>
+
+</html>

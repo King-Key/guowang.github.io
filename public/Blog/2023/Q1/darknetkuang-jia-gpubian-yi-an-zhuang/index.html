@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        
+            
+        
+
+      <title></title>
+
+      
+      <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+      <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+      
+
+      <!-- CSS -->
+      
+      <link rel="stylesheet" href="https://king-key.github.io/book.css">
+      <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+        
+
+      <script>
+          document.addEventListener('DOMContentLoaded', function () {
+            var menu = document.getElementById('navMenu');
+            var toggleButton = document.getElementById('toggleMenu');
+
+            toggleButton.addEventListener('click', function () {
+                menu.classList.toggle('active');
+            });
+        });
+
+      </script>
+
+
+      
+      
+    </head>
+
+    <body>
+        <div class="menu">
+            <div class="card">
+                <div class="card-border-top"></div>
+                <div class="img"></div>
+                <span> Wang Guo</span>
+                <p class="job"> <a class="link" href="https://qingkelab.github.io">青稞社区</a>创始人 </p>
+                <center><img src="https://img.shields.io/badge/MBTI性格类型-INTJ(独立自主的专家)-blue" width="70%"></img></center><br>
+              
+                <div class="radio-inputs">
+                        <label>
+                            <a class="link"  href="/主页/">
+                            <i class="bi bi-person-rolodex"></i>
+                            </a>
+                        </label>
+
+                        <label>
+                            <a cla  ss="link" href="https://github.com/King-Key">
+                            <i class="bi-github"></i>
+                            </a>
+                        </label>
+
+                        <label>
+                            <a class="link"  href="https://blog.csdn.net/King_key?type=blog">
+                            <i class="bi bi-body-text"></i>
+                            </a>
+                        </label>
+
+                        <label>
+                            <a class="link"  href="https://twitter.com/KingKey113">
+                            <i class="bi bi-twitter"></i>
+                            </a>
+                        </label>
+
+                </div><br>
+            
+
+
+              <nav role="navigation">
+                <ul>
+                    
+                        
+                        
+                            
+                            <li >
+                                
+                                <a href="https://king-key.github.io/主页/">
+                                    
+                                    <!--  -->
+                                    <i class="bi bi-bookmarks"></i>
+                                    About
+
+                                </a>
+                                
+                            <!-- </li><hr align=center color=#8b8b8b8 size=4> -->
+                        
+                            
+                            <li >
+                                
+                                <a href="https://king-key.github.io/Blog/">
+                                    
+                                    <!--  -->
+                                    <i class="bi bi-bookmarks"></i>
+                                    Blog
+
+                                </a>
+                                
+                            <!-- </li><hr align=center color=#8b8b8b8 size=4> -->
+                        
+                            
+                            <li >
+                                
+                                <a href="https://king-key.github.io/随笔/">
+                                    
+                                    <!--  -->
+                                    <i class="bi bi-bookmarks"></i>
+                                    随笔
+
+                                </a>
+                                
+                            <!-- </li><hr align=center color=#8b8b8b8 size=4> -->
+                        
+                            
+                            <li >
+                                
+                                <a href="https://king-key.github.io/友情链接/">
+                                    
+                                    <!--  -->
+                                    <i class="bi bi-bookmarks"></i>
+                                    links
+
+                                </a>
+                                
+                            <!-- </li><hr align=center color=#8b8b8b8 size=4> -->
+                        
+                    
+                </ul>
+            </nav>
+
+            </div>
+            
+            
+        </div>
+
+        <div class="page">
+            <div class="page__header">
+                <div class="menu-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                
+                <span class="search-icon">🔎</span>
+                
+            </div>
+
+            <div class="page__content">
+                
+                <div class="search-container">
+                    <input id="search" type="search" placeholder="Search..">
+                    <div class="search-results">
+                        <div class="search-results__header"></div>
+                        <ul class="search-results__items"></ul>
+                    </div>
+                </div>
+                
+                <div class="book-content">
+                    
+    <h1>darknet框架GPU编译安装 </h1>
+    ● ⏰︎<i> Push time：2022-12-03 10:12:30</i>
+    <hr align=center color=#987cb9 size=4>
+    
+    <!-- 引入目录 -->
+    <div class="sidebar" id="sidebar">
+        <ul id="toc"></ul>
+    </div>
+
+
+    <div class="content">
+        <blockquote>
+<p>Darknet: Open Source Neural Networks in C</p>
+</blockquote>
+<!--more-->
+<h4 id="1-darknetxia-zai">1、darknet下载</h4>
+<pre data-lang="shell" style="background-color:#eff1f5;color:#4f5b66;" class="language-shell "><code class="language-shell" data-lang="shell"><span>git clone https://github.com/pjreddie/darknet.git
+</span><span>cd darknet
+</span></code></pre>
+<p>设置<code>makefile</code></p>
+<pre data-lang="shell" style="background-color:#eff1f5;color:#4f5b66;" class="language-shell "><code class="language-shell" data-lang="shell"><span>gpu=1 
+</span><span>cudnn=1 
+</span><span>opencv=1
+</span></code></pre>
+<p>【1】GPU=1;需要设置显卡驱动、cuda</p>
+<ul>
+<li>使用<code>nvidia-smi</code>查看显卡型号和支持的cuda版本号</li>
+</ul>
+<p><img src="https://king-key.github.io/Blog/2023/Q1/darknetkuang-jia-gpubian-yi-an-zhuang/./1670033905887.jpg" alt="" /></p>
+<ul>
+<li><a href="https://developer.nvidia.com/cuda-downloads?target_os=Linux&amp;target_arch=x86_64&amp;Distribution=Ubuntu&amp;target_version=22.04&amp;target_type=runfile_local">nvidia官网</a>下载cuda,以及cudnn</li>
+</ul>
+<p><img src="https://king-key.github.io/Blog/2023/Q1/darknetkuang-jia-gpubian-yi-an-zhuang/./1670034688635.jpg" alt="" /></p>
+<p>安装cuda若提示</p>
+<pre data-lang="shell" style="background-color:#eff1f5;color:#4f5b66;" class="language-shell "><code class="language-shell" data-lang="shell"><span>Existing package manager installation of the driver found. It is strongly recommended that you remove this before continuing
+</span><span>
+</span></code></pre>
+<p>原因是驱动重复安装，卸载掉其他驱动</p>
+<pre data-lang="shell" style="background-color:#eff1f5;color:#4f5b66;" class="language-shell "><code class="language-shell" data-lang="shell"><span>dpkg -l | grep Nvidia //查看驱动
+</span><span>sudo apt-get purge &quot;nvidia*&quot;  //卸载旧版本驱动
+</span></code></pre>
+<p>然后再次安装就正常了。成功之后显示</p>
+<pre data-lang="shell" style="background-color:#eff1f5;color:#4f5b66;" class="language-shell "><code class="language-shell" data-lang="shell"><span>===========
+</span><span>= Summary =
+</span><span>===========
+</span><span>
+</span><span>Driver:   Not Selected
+</span><span>Toolkit:  Installed in /usr/local/cuda-11.6/
+</span><span>
+</span><span>Please make sure that
+</span><span> -   PATH includes /usr/local/cuda-11.6/bin
+</span><span> -   LD_LIBRARY_PATH includes /usr/local/cuda-11.6/lib64, or, add /usr/local/cuda-11.6/lib64 to /etc/ld.so.conf and run ldconfig as root
+</span><span>
+</span><span>To uninstall the CUDA Toolkit, run cuda-uninstaller in /usr/local/cuda-11.6/bin
+</span><span>***WARNING: Incomplete installation! This installation did not install the CUDA Driver. A driver of version at least 510.00 is required for CUDA 11.6 functionality to work.
+</span><span>To install the driver using this installer, run the following command, replacing &lt;CudaInstaller&gt; with the name of this run file:
+</span><span>    sudo &lt;CudaInstaller&gt;.run --silent --driver
+</span><span>
+</span><span>Logfile is /var/log/cuda-installer.log
+</span></code></pre>
+<p>添加cuda到系统路径，<code>vim ~/.zshrv</code></p>
+<pre data-lang="shell" style="background-color:#eff1f5;color:#4f5b66;" class="language-shell "><code class="language-shell" data-lang="shell"><span>export PATH=/usr/local/cuda-11.6/bin${PATH:+:${PATH}}
+</span><span>export LD_LIBRARY_PATH=/usr/local/cuda-11.6/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+</span></code></pre>
+<p>运行<code>source ~/.zshrc</code>让路径生效，此时可以输入命令<code> nvcc -V</code> 验证一下cuda</p>
+<pre data-lang="shell" style="background-color:#eff1f5;color:#4f5b66;" class="language-shell "><code class="language-shell" data-lang="shell"><span>nvcc: NVIDIA (R) Cuda compiler driver
+</span><span>Copyright (c) 2005-2022 NVIDIA Corporation
+</span><span>Built on Thu_Feb_10_18:23:41_PST_2022
+</span><span>Cuda compilation tools, release 11.6, V11.6.112
+</span><span>Build cuda_11.6.r11.6/compiler.30978841_0
+</span></code></pre>
+<p>【2】cudnn=1</p>
+<ul>
+<li><a href="https://developer.nvidia.com/rdp/cudnn-download">nvidia官网</a>选择相应版本的cudnn,进行下载（建议下载可解压版本的，方便自己操作）
+<img src="https://king-key.github.io/Blog/2023/Q1/darknetkuang-jia-gpubian-yi-an-zhuang/./1670035730632.jpg" alt="" />
+将解压出来的cudnn文件copy到cuda路径中(<code>usl/local</code>中会有两个cuda路径，一个带版本号，一个不带，记得是copy到不带版本号的cuda路径中)</li>
+</ul>
+<pre data-lang="shell" style="background-color:#eff1f5;color:#4f5b66;" class="language-shell "><code class="language-shell" data-lang="shell"><span>sudo cp include/cudnn*.h /usr/local/cuda/include
+</span><span>sudo cp lib/libcudnn* /usr/local/cuda/lib64
+</span><span>sudo chmod a+r /usr/local/cuda/include/cudnn*.h /usr/local/cuda/lib64/libcudnn*
+</span></code></pre>
+<p>copy完成之后用<code>cat /usr/local/cuda/include/cudnn_version.h | grep CUDNN_MAJOR -A 2 </code>验证一下</p>
+<pre data-lang="shell" style="background-color:#eff1f5;color:#4f5b66;" class="language-shell "><code class="language-shell" data-lang="shell"><span>#define CUDNN_MAJOR 8
+</span><span>#define CUDNN_MINOR 7
+</span><span>#define CUDNN_PATCHLEVEL 0
+</span><span>--
+</span><span>#define CUDNN_VERSION (CUDNN_MAJOR * 1000 + CUDNN_MINOR * 100 + CUDNN_PATCHLEVEL)
+</span></code></pre>
+<p>【3】opencv=1</p>
+<h4 id="2-darknetbian-yi">2、darknet编译</h4>
+<p>由于版本问题，需要先修改几个文件</p>
+<ul>
+<li>用<code>https://github.com/arnoldfychen/darknet/blob/master/src/convolutional_layer.c </code>直接替换<code>darknet/src/convolutional_laye.c</code>文件，老版本不支持cudnn8以上的</li>
+</ul>
+<pre data-lang="c" style="background-color:#eff1f5;color:#4f5b66;" class="language-c "><code class="language-c" data-lang="c"><span style="color:#b48ead;">#include </span><span>&quot;</span><span style="color:#a3be8c;">convolutional_layer.h</span><span>&quot;
+</span><span style="color:#b48ead;">#include </span><span>&quot;</span><span style="color:#a3be8c;">utils.h</span><span>&quot;
+</span><span style="color:#b48ead;">#include </span><span>&quot;</span><span style="color:#a3be8c;">batchnorm_layer.h</span><span>&quot;
+</span><span style="color:#b48ead;">#include </span><span>&quot;</span><span style="color:#a3be8c;">im2col.h</span><span>&quot;
+</span><span style="color:#b48ead;">#include </span><span>&quot;</span><span style="color:#a3be8c;">col2im.h</span><span>&quot;
+</span><span style="color:#b48ead;">#include </span><span>&quot;</span><span style="color:#a3be8c;">blas.h</span><span>&quot;
+</span><span style="color:#b48ead;">#include </span><span>&quot;</span><span style="color:#a3be8c;">gemm.h</span><span>&quot;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">stdio.h</span><span>&gt;
+</span><span style="color:#b48ead;">#include </span><span>&lt;</span><span style="color:#a3be8c;">time.h</span><span>&gt;
+</span><span>
+</span><span style="color:#b48ead;">#define </span><span>PRINT_CUDNN_ALGO </span><span style="color:#d08770;">0
+</span><span style="color:#b48ead;">#define </span><span>MEMORY_LIMIT </span><span style="color:#d08770;">2000000000
+</span><span>
+</span><span style="color:#b48ead;">#ifdef</span><span> AI2
+</span><span style="color:#b48ead;">#include </span><span>&quot;</span><span style="color:#a3be8c;">xnor_layer.h</span><span>&quot;
+</span><span style="color:#b48ead;">#endif
+</span><span>
+</span><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">swap_binary</span><span>(convolutional_layer *</span><span style="color:#bf616a;">l</span><span>)
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">float </span><span>*swap = l-&gt;weights;
+</span><span>    l-&gt;weights = l-&gt;binary_weights;
+</span><span>    l-&gt;binary_weights = swap;
+</span><span>
+</span><span style="color:#b48ead;">#ifdef</span><span> GPU
+</span><span>    swap = l-&gt;weights_gpu;
+</span><span>    l-&gt;weights_gpu = l-&gt;binary_weights_gpu;
+</span><span>    l-&gt;binary_weights_gpu = swap;
+</span><span style="color:#b48ead;">#endif
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">binarize_weights</span><span>(</span><span style="color:#b48ead;">float </span><span>*</span><span style="color:#bf616a;">weights</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">n</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">size</span><span>, </span><span style="color:#b48ead;">float </span><span>*</span><span style="color:#bf616a;">binary</span><span>)
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">int</span><span> i, f;
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(f = </span><span style="color:#d08770;">0</span><span>; f &lt; n; ++f){
+</span><span>        </span><span style="color:#b48ead;">float</span><span> mean = </span><span style="color:#d08770;">0</span><span>;
+</span><span>        </span><span style="color:#b48ead;">for</span><span>(i = </span><span style="color:#d08770;">0</span><span>; i &lt; size; ++i){
+</span><span>            mean += </span><span style="color:#96b5b4;">fabs</span><span>(weights[f*size + i]);
+</span><span>        }
+</span><span>        mean = mean / size;
+</span><span>        </span><span style="color:#b48ead;">for</span><span>(i = </span><span style="color:#d08770;">0</span><span>; i &lt; size; ++i){
+</span><span>            binary[f*size + i] = (weights[f*size + i] &gt; </span><span style="color:#d08770;">0</span><span>) ? mean : -mean;
+</span><span>        }
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">binarize_cpu</span><span>(</span><span style="color:#b48ead;">float </span><span>*</span><span style="color:#bf616a;">input</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">n</span><span>, </span><span style="color:#b48ead;">float </span><span>*</span><span style="color:#bf616a;">binary</span><span>)
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">int</span><span> i;
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(i = </span><span style="color:#d08770;">0</span><span>; i &lt; n; ++i){
+</span><span>        binary[i] = (input[i] &gt; </span><span style="color:#d08770;">0</span><span>) ? </span><span style="color:#d08770;">1 </span><span>: -</span><span style="color:#d08770;">1</span><span>;
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">binarize_input</span><span>(</span><span style="color:#b48ead;">float </span><span>*</span><span style="color:#bf616a;">input</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">n</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">size</span><span>, </span><span style="color:#b48ead;">float </span><span>*</span><span style="color:#bf616a;">binary</span><span>)
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">int</span><span> i, s;
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(s = </span><span style="color:#d08770;">0</span><span>; s &lt; size; ++s){
+</span><span>        </span><span style="color:#b48ead;">float</span><span> mean = </span><span style="color:#d08770;">0</span><span>;
+</span><span>        </span><span style="color:#b48ead;">for</span><span>(i = </span><span style="color:#d08770;">0</span><span>; i &lt; n; ++i){
+</span><span>            mean += </span><span style="color:#96b5b4;">fabs</span><span>(input[i*size + s]);
+</span><span>        }
+</span><span>        mean = mean / n;
+</span><span>        </span><span style="color:#b48ead;">for</span><span>(i = </span><span style="color:#d08770;">0</span><span>; i &lt; n; ++i){
+</span><span>            binary[i*size + s] = (input[i*size + s] &gt; </span><span style="color:#d08770;">0</span><span>) ? mean : -mean;
+</span><span>        }
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">convolutional_out_height</span><span>(convolutional_layer </span><span style="color:#bf616a;">l</span><span>)
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">return </span><span>(l.</span><span style="color:#bf616a;">h </span><span>+ </span><span style="color:#d08770;">2</span><span>*l.</span><span style="color:#bf616a;">pad </span><span>- l.</span><span style="color:#bf616a;">size</span><span>) / l.</span><span style="color:#bf616a;">stride </span><span>+ </span><span style="color:#d08770;">1</span><span>;
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">int </span><span style="color:#8fa1b3;">convolutional_out_width</span><span>(convolutional_layer </span><span style="color:#bf616a;">l</span><span>)
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">return </span><span>(l.</span><span style="color:#bf616a;">w </span><span>+ </span><span style="color:#d08770;">2</span><span>*l.</span><span style="color:#bf616a;">pad </span><span>- l.</span><span style="color:#bf616a;">size</span><span>) / l.</span><span style="color:#bf616a;">stride </span><span>+ </span><span style="color:#d08770;">1</span><span>;
+</span><span>}
+</span><span>
+</span><span>image </span><span style="color:#8fa1b3;">get_convolutional_image</span><span>(convolutional_layer </span><span style="color:#bf616a;">l</span><span>)
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">return </span><span style="color:#bf616a;">float_to_image</span><span>(l.</span><span style="color:#bf616a;">out_w</span><span>,l.</span><span style="color:#bf616a;">out_h</span><span>,l.</span><span style="color:#bf616a;">out_c</span><span>,l.</span><span style="color:#bf616a;">output</span><span>);
+</span><span>}
+</span><span>
+</span><span>image </span><span style="color:#8fa1b3;">get_convolutional_delta</span><span>(convolutional_layer </span><span style="color:#bf616a;">l</span><span>)
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">return </span><span style="color:#bf616a;">float_to_image</span><span>(l.</span><span style="color:#bf616a;">out_w</span><span>,l.</span><span style="color:#bf616a;">out_h</span><span>,l.</span><span style="color:#bf616a;">out_c</span><span>,l.</span><span style="color:#bf616a;">delta</span><span>);
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">static </span><span>size_t </span><span style="color:#8fa1b3;">get_workspace_size</span><span>(layer </span><span style="color:#bf616a;">l</span><span>){
+</span><span style="color:#b48ead;">#ifdef</span><span> CUDNN
+</span><span>    </span><span style="color:#b48ead;">if</span><span>(gpu_index &gt;= </span><span style="color:#d08770;">0</span><span>){
+</span><span>        size_t most = </span><span style="color:#d08770;">0</span><span>;
+</span><span>        size_t s = </span><span style="color:#d08770;">0</span><span>;
+</span><span>        </span><span style="color:#bf616a;">cudnnGetConvolutionForwardWorkspaceSize</span><span>(</span><span style="color:#bf616a;">cudnn_handle</span><span>(),
+</span><span>                l.</span><span style="color:#bf616a;">srcTensorDesc</span><span>,
+</span><span>                l.</span><span style="color:#bf616a;">weightDesc</span><span>,
+</span><span>                l.</span><span style="color:#bf616a;">convDesc</span><span>,
+</span><span>                l.</span><span style="color:#bf616a;">dstTensorDesc</span><span>,
+</span><span>                l.</span><span style="color:#bf616a;">fw_algo</span><span>,
+</span><span>                &amp;s);
+</span><span>        </span><span style="color:#b48ead;">if </span><span>(s &gt; most) most = s;
+</span><span>        </span><span style="color:#bf616a;">cudnnGetConvolutionBackwardFilterWorkspaceSize</span><span>(</span><span style="color:#bf616a;">cudnn_handle</span><span>(),
+</span><span>                l.</span><span style="color:#bf616a;">srcTensorDesc</span><span>,
+</span><span>                l.</span><span style="color:#bf616a;">ddstTensorDesc</span><span>,
+</span><span>                l.</span><span style="color:#bf616a;">convDesc</span><span>,
+</span><span>                l.</span><span style="color:#bf616a;">dweightDesc</span><span>,
+</span><span>                l.</span><span style="color:#bf616a;">bf_algo</span><span>,
+</span><span>                &amp;s);
+</span><span>        </span><span style="color:#b48ead;">if </span><span>(s &gt; most) most = s;
+</span><span>        </span><span style="color:#bf616a;">cudnnGetConvolutionBackwardDataWorkspaceSize</span><span>(</span><span style="color:#bf616a;">cudnn_handle</span><span>(),
+</span><span>                l.</span><span style="color:#bf616a;">weightDesc</span><span>,
+</span><span>                l.</span><span style="color:#bf616a;">ddstTensorDesc</span><span>,
+</span><span>                l.</span><span style="color:#bf616a;">convDesc</span><span>,
+</span><span>                l.</span><span style="color:#bf616a;">dsrcTensorDesc</span><span>,
+</span><span>                l.</span><span style="color:#bf616a;">bd_algo</span><span>,
+</span><span>                &amp;s);
+</span><span>        </span><span style="color:#b48ead;">if </span><span>(s &gt; most) most = s;
+</span><span>        </span><span style="color:#b48ead;">return</span><span> most;
+</span><span>    }
+</span><span style="color:#b48ead;">#endif
+</span><span>    </span><span style="color:#b48ead;">return </span><span>(size_t)l.</span><span style="color:#bf616a;">out_h</span><span>*l.</span><span style="color:#bf616a;">out_w</span><span>*l.</span><span style="color:#bf616a;">size</span><span>*l.</span><span style="color:#bf616a;">size</span><span>*l.</span><span style="color:#bf616a;">c</span><span>/l.</span><span style="color:#bf616a;">groups</span><span>*sizeof(</span><span style="color:#b48ead;">float</span><span>);
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">#ifdef</span><span> GPU
+</span><span style="color:#b48ead;">#ifdef</span><span> CUDNN
+</span><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">cudnn_convolutional_setup</span><span>(layer *</span><span style="color:#bf616a;">l</span><span>)
+</span><span>{
+</span><span>    </span><span style="color:#bf616a;">cudnnSetTensor4dDescriptor</span><span>(l-&gt;dsrcTensorDesc, CUDNN_TENSOR_NCHW, CUDNN_DATA_FLOAT, l-&gt;batch, l-&gt;c, l-&gt;h, l-&gt;w); 
+</span><span>    </span><span style="color:#bf616a;">cudnnSetTensor4dDescriptor</span><span>(l-&gt;ddstTensorDesc, CUDNN_TENSOR_NCHW, CUDNN_DATA_FLOAT, l-&gt;batch, l-&gt;out_c, l-&gt;out_h, l-&gt;out_w); 
+</span><span>
+</span><span>    </span><span style="color:#bf616a;">cudnnSetTensor4dDescriptor</span><span>(l-&gt;srcTensorDesc, CUDNN_TENSOR_NCHW, CUDNN_DATA_FLOAT, l-&gt;batch, l-&gt;c, l-&gt;h, l-&gt;w); 
+</span><span>    </span><span style="color:#bf616a;">cudnnSetTensor4dDescriptor</span><span>(l-&gt;dstTensorDesc, CUDNN_TENSOR_NCHW, CUDNN_DATA_FLOAT, l-&gt;batch, l-&gt;out_c, l-&gt;out_h, l-&gt;out_w); 
+</span><span>    </span><span style="color:#bf616a;">cudnnSetTensor4dDescriptor</span><span>(l-&gt;normTensorDesc, CUDNN_TENSOR_NCHW, CUDNN_DATA_FLOAT, </span><span style="color:#d08770;">1</span><span>, l-&gt;out_c, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">1</span><span>); 
+</span><span>
+</span><span>    </span><span style="color:#bf616a;">cudnnSetFilter4dDescriptor</span><span>(l-&gt;dweightDesc, CUDNN_DATA_FLOAT, CUDNN_TENSOR_NCHW, l-&gt;n, l-&gt;c/l-&gt;groups, l-&gt;size, l-&gt;size); 
+</span><span>    </span><span style="color:#bf616a;">cudnnSetFilter4dDescriptor</span><span>(l-&gt;weightDesc, CUDNN_DATA_FLOAT, CUDNN_TENSOR_NCHW, l-&gt;n, l-&gt;c/l-&gt;groups, l-&gt;size, l-&gt;size); 
+</span><span>    </span><span style="color:#b48ead;">#if</span><span> CUDNN_MAJOR &gt;= 6
+</span><span>    </span><span style="color:#bf616a;">cudnnSetConvolution2dDescriptor</span><span>(l-&gt;convDesc, l-&gt;pad, l-&gt;pad, l-&gt;stride, l-&gt;stride, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">1</span><span>, CUDNN_CROSS_CORRELATION, CUDNN_DATA_FLOAT);
+</span><span>    </span><span style="color:#b48ead;">#else
+</span><span>    </span><span style="color:#bf616a;">cudnnSetConvolution2dDescriptor</span><span>(l-&gt;convDesc, l-&gt;pad, l-&gt;pad, l-&gt;stride, l-&gt;stride, </span><span style="color:#d08770;">1</span><span>, </span><span style="color:#d08770;">1</span><span>, CUDNN_CROSS_CORRELATION);
+</span><span>    </span><span style="color:#b48ead;">#endif
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">#if</span><span> CUDNN_MAJOR &gt;= 7
+</span><span>    </span><span style="color:#bf616a;">cudnnSetConvolutionGroupCount</span><span>(l-&gt;convDesc, l-&gt;groups);
+</span><span>    </span><span style="color:#b48ead;">#else
+</span><span>    </span><span style="color:#b48ead;">if</span><span>(l-&gt;groups &gt; </span><span style="color:#d08770;">1</span><span>){
+</span><span>        </span><span style="color:#bf616a;">error</span><span>(&quot;</span><span style="color:#a3be8c;">CUDNN &lt; 7 doesn&#39;t support groups, please upgrade!</span><span>&quot;);
+</span><span>    }
+</span><span>    </span><span style="color:#b48ead;">#endif
+</span><span>    </span><span style="color:#b48ead;">#if</span><span> CUDNN_MAJOR &gt;= 8
+</span><span>    </span><span style="color:#b48ead;">int</span><span> returnedAlgoCount;
+</span><span>    cudnnConvolutionFwdAlgoPerf_t       fw_results[</span><span style="color:#d08770;">2 </span><span>* CUDNN_CONVOLUTION_FWD_ALGO_COUNT];
+</span><span>    cudnnConvolutionBwdDataAlgoPerf_t   bd_results[</span><span style="color:#d08770;">2 </span><span>* CUDNN_CONVOLUTION_BWD_DATA_ALGO_COUNT];
+</span><span>    cudnnConvolutionBwdFilterAlgoPerf_t bf_results[</span><span style="color:#d08770;">2 </span><span>* CUDNN_CONVOLUTION_BWD_FILTER_ALGO_COUNT];
+</span><span>
+</span><span>    </span><span style="color:#bf616a;">cudnnFindConvolutionForwardAlgorithm</span><span>(</span><span style="color:#bf616a;">cudnn_handle</span><span>(),
+</span><span>            l-&gt;srcTensorDesc,
+</span><span>            l-&gt;weightDesc,
+</span><span>            l-&gt;convDesc,
+</span><span>            l-&gt;dstTensorDesc,
+</span><span>            CUDNN_CONVOLUTION_FWD_ALGO_COUNT,
+</span><span>            &amp;returnedAlgoCount,
+</span><span>	    fw_results);
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> algoIndex = </span><span style="color:#d08770;">0</span><span>; algoIndex &lt; returnedAlgoCount; ++algoIndex){
+</span><span>        </span><span style="color:#b48ead;">#if</span><span> PRINT_CUDNN_ALGO &gt; 0
+</span><span>        </span><span style="color:#96b5b4;">printf</span><span>(&quot;</span><span style="color:#a3be8c;">^^^^ </span><span style="color:#d08770;">%s</span><span style="color:#a3be8c;"> for Algo </span><span style="color:#d08770;">%d</span><span style="color:#a3be8c;">: </span><span style="color:#d08770;">%f</span><span style="color:#a3be8c;"> time requiring </span><span style="color:#d08770;">%llu</span><span style="color:#a3be8c;"> memory</span><span style="color:#96b5b4;">\n</span><span>&quot;,
+</span><span>               </span><span style="color:#bf616a;">cudnnGetErrorString</span><span>(fw_results[algoIndex].</span><span style="color:#bf616a;">status</span><span>),
+</span><span>               fw_results[algoIndex].</span><span style="color:#bf616a;">algo</span><span>, fw_results[algoIndex].</span><span style="color:#bf616a;">time</span><span>,
+</span><span>               (</span><span style="color:#b48ead;">unsigned long long</span><span>)fw_results[algoIndex].</span><span style="color:#bf616a;">memory</span><span>);
+</span><span>        </span><span style="color:#b48ead;">#endif
+</span><span>        </span><span style="color:#b48ead;">if</span><span>( fw_results[algoIndex].</span><span style="color:#bf616a;">memory </span><span>&lt; MEMORY_LIMIT ){
+</span><span>            l-&gt;fw_algo = fw_results[algoIndex].</span><span style="color:#bf616a;">algo</span><span>;
+</span><span>            </span><span style="color:#b48ead;">break</span><span>;
+</span><span>	}
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#bf616a;">cudnnFindConvolutionBackwardDataAlgorithm</span><span>(</span><span style="color:#bf616a;">cudnn_handle</span><span>(),
+</span><span>            l-&gt;weightDesc,
+</span><span>            l-&gt;ddstTensorDesc,
+</span><span>            l-&gt;convDesc,
+</span><span>            l-&gt;dsrcTensorDesc,
+</span><span>            CUDNN_CONVOLUTION_BWD_DATA_ALGO_COUNT,
+</span><span>            &amp;returnedAlgoCount,
+</span><span>            bd_results);
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> algoIndex = </span><span style="color:#d08770;">0</span><span>; algoIndex &lt; returnedAlgoCount; ++algoIndex){
+</span><span>        </span><span style="color:#b48ead;">#if</span><span> PRINT_CUDNN_ALGO &gt; 0
+</span><span>        </span><span style="color:#96b5b4;">printf</span><span>(&quot;</span><span style="color:#a3be8c;">^^^^ </span><span style="color:#d08770;">%s</span><span style="color:#a3be8c;"> for Algo </span><span style="color:#d08770;">%d</span><span style="color:#a3be8c;">: </span><span style="color:#d08770;">%f</span><span style="color:#a3be8c;"> time requiring </span><span style="color:#d08770;">%llu</span><span style="color:#a3be8c;"> memory</span><span style="color:#96b5b4;">\n</span><span>&quot;,
+</span><span>               </span><span style="color:#bf616a;">cudnnGetErrorString</span><span>(bd_results[algoIndex].</span><span style="color:#bf616a;">status</span><span>),
+</span><span>               bd_results[algoIndex].</span><span style="color:#bf616a;">algo</span><span>, bd_results[algoIndex].</span><span style="color:#bf616a;">time</span><span>,
+</span><span>               (</span><span style="color:#b48ead;">unsigned long long</span><span>)bd_results[algoIndex].</span><span style="color:#bf616a;">memory</span><span>);
+</span><span>        </span><span style="color:#b48ead;">#endif
+</span><span>        </span><span style="color:#b48ead;">if</span><span>( bd_results[algoIndex].</span><span style="color:#bf616a;">memory </span><span>&lt; MEMORY_LIMIT ){
+</span><span>            l-&gt;bd_algo = bd_results[algoIndex].</span><span style="color:#bf616a;">algo</span><span>;
+</span><span>            </span><span style="color:#b48ead;">break</span><span>;
+</span><span>        }
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#bf616a;">cudnnFindConvolutionBackwardFilterAlgorithm</span><span>(</span><span style="color:#bf616a;">cudnn_handle</span><span>(),
+</span><span>            l-&gt;srcTensorDesc,
+</span><span>            l-&gt;ddstTensorDesc,
+</span><span>            l-&gt;convDesc,
+</span><span>            l-&gt;dweightDesc,
+</span><span>            CUDNN_CONVOLUTION_BWD_FILTER_ALGO_COUNT,
+</span><span>            &amp;returnedAlgoCount,
+</span><span>            bf_results);
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(</span><span style="color:#b48ead;">int</span><span> algoIndex = </span><span style="color:#d08770;">0</span><span>; algoIndex &lt; returnedAlgoCount; ++algoIndex){
+</span><span>        </span><span style="color:#b48ead;">#if</span><span> PRINT_CUDNN_ALGO &gt; 0
+</span><span>        </span><span style="color:#96b5b4;">printf</span><span>(&quot;</span><span style="color:#a3be8c;">^^^^ </span><span style="color:#d08770;">%s</span><span style="color:#a3be8c;"> for Algo </span><span style="color:#d08770;">%d</span><span style="color:#a3be8c;">: </span><span style="color:#d08770;">%f</span><span style="color:#a3be8c;"> time requiring </span><span style="color:#d08770;">%llu</span><span style="color:#a3be8c;"> memory</span><span style="color:#96b5b4;">\n</span><span>&quot;,
+</span><span>               </span><span style="color:#bf616a;">cudnnGetErrorString</span><span>(bf_results[algoIndex].</span><span style="color:#bf616a;">status</span><span>),
+</span><span>               bf_results[algoIndex].</span><span style="color:#bf616a;">algo</span><span>, bf_results[algoIndex].</span><span style="color:#bf616a;">time</span><span>,
+</span><span>               (</span><span style="color:#b48ead;">unsigned long long</span><span>)bf_results[algoIndex].</span><span style="color:#bf616a;">memory</span><span>);
+</span><span>        </span><span style="color:#b48ead;">#endif
+</span><span>        </span><span style="color:#b48ead;">if</span><span>( bf_results[algoIndex].</span><span style="color:#bf616a;">memory </span><span>&lt; MEMORY_LIMIT ){
+</span><span>            l-&gt;bf_algo = bf_results[algoIndex].</span><span style="color:#bf616a;">algo</span><span>;
+</span><span>            </span><span style="color:#b48ead;">break</span><span>;
+</span><span>        }
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">#else
+</span><span>
+</span><span>    </span><span style="color:#bf616a;">cudnnGetConvolutionForwardAlgorithm</span><span>(</span><span style="color:#bf616a;">cudnn_handle</span><span>(),
+</span><span>            l-&gt;srcTensorDesc,
+</span><span>            l-&gt;weightDesc,
+</span><span>            l-&gt;convDesc,
+</span><span>            l-&gt;dstTensorDesc,
+</span><span>            CUDNN_CONVOLUTION_FWD_SPECIFY_WORKSPACE_LIMIT,
+</span><span>            </span><span style="color:#d08770;">2000000000</span><span>,
+</span><span>            &amp;l-&gt;fw_algo);
+</span><span>    </span><span style="color:#bf616a;">cudnnGetConvolutionBackwardDataAlgorithm</span><span>(</span><span style="color:#bf616a;">cudnn_handle</span><span>(),
+</span><span>            l-&gt;weightDesc,
+</span><span>            l-&gt;ddstTensorDesc,
+</span><span>            l-&gt;convDesc,
+</span><span>            l-&gt;dsrcTensorDesc,
+</span><span>            CUDNN_CONVOLUTION_BWD_DATA_SPECIFY_WORKSPACE_LIMIT,
+</span><span>            </span><span style="color:#d08770;">2000000000</span><span>,
+</span><span>            &amp;l-&gt;bd_algo);
+</span><span>    </span><span style="color:#bf616a;">cudnnGetConvolutionBackwardFilterAlgorithm</span><span>(</span><span style="color:#bf616a;">cudnn_handle</span><span>(),
+</span><span>            l-&gt;srcTensorDesc,
+</span><span>            l-&gt;ddstTensorDesc,
+</span><span>            l-&gt;convDesc,
+</span><span>            l-&gt;dweightDesc,
+</span><span>            CUDNN_CONVOLUTION_BWD_FILTER_SPECIFY_WORKSPACE_LIMIT,
+</span><span>            </span><span style="color:#d08770;">2000000000</span><span>,
+</span><span>            &amp;l-&gt;bf_algo);
+</span><span>    </span><span style="color:#b48ead;">#endif
+</span><span>}
+</span><span style="color:#b48ead;">#endif
+</span><span style="color:#b48ead;">#endif
+</span><span>
+</span><span>convolutional_layer </span><span style="color:#8fa1b3;">make_convolutional_layer</span><span>(</span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">batch</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">h</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">w</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">c</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">n</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">groups</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">size</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">stride</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">padding</span><span>, ACTIVATION </span><span style="color:#bf616a;">activation</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">batch_normalize</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">binary</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">xnor</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">adam</span><span>)
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">int</span><span> i;
+</span><span>    convolutional_layer l = {</span><span style="color:#d08770;">0</span><span>};
+</span><span>    l.</span><span style="color:#bf616a;">type </span><span>= CONVOLUTIONAL;
+</span><span>
+</span><span>    l.</span><span style="color:#bf616a;">groups </span><span>= groups;
+</span><span>    l.</span><span style="color:#bf616a;">h </span><span>= h;
+</span><span>    l.</span><span style="color:#bf616a;">w </span><span>= w;
+</span><span>    l.</span><span style="color:#bf616a;">c </span><span>= c;
+</span><span>    l.</span><span style="color:#bf616a;">n </span><span>= n;
+</span><span>    l.</span><span style="color:#bf616a;">binary </span><span>= binary;
+</span><span>    l.</span><span style="color:#bf616a;">xnor </span><span>= xnor;
+</span><span>    l.</span><span style="color:#bf616a;">batch </span><span>= batch;
+</span><span>    l.</span><span style="color:#bf616a;">stride </span><span>= stride;
+</span><span>    l.</span><span style="color:#bf616a;">size </span><span>= size;
+</span><span>    l.</span><span style="color:#bf616a;">pad </span><span>= padding;
+</span><span>    l.</span><span style="color:#bf616a;">batch_normalize </span><span>= batch_normalize;
+</span><span>
+</span><span>    l.</span><span style="color:#bf616a;">weights </span><span>= </span><span style="color:#96b5b4;">calloc</span><span>(c/groups*n*size*size, sizeof(</span><span style="color:#b48ead;">float</span><span>));
+</span><span>    l.</span><span style="color:#bf616a;">weight_updates </span><span>= </span><span style="color:#96b5b4;">calloc</span><span>(c/groups*n*size*size, sizeof(</span><span style="color:#b48ead;">float</span><span>));
+</span><span>
+</span><span>    l.</span><span style="color:#bf616a;">biases </span><span>= </span><span style="color:#96b5b4;">calloc</span><span>(n, sizeof(</span><span style="color:#b48ead;">float</span><span>));
+</span><span>    l.</span><span style="color:#bf616a;">bias_updates </span><span>= </span><span style="color:#96b5b4;">calloc</span><span>(n, sizeof(</span><span style="color:#b48ead;">float</span><span>));
+</span><span>
+</span><span>    l.</span><span style="color:#bf616a;">nweights </span><span>= c/groups*n*size*size;
+</span><span>    l.</span><span style="color:#bf616a;">nbiases </span><span>= n;
+</span><span>
+</span><span>    </span><span style="color:#a7adba;">// float scale = 1./sqrt(size*size*c);
+</span><span>    </span><span style="color:#b48ead;">float</span><span> scale = </span><span style="color:#96b5b4;">sqrt</span><span>(</span><span style="color:#d08770;">2.</span><span>/(size*size*c/l.</span><span style="color:#bf616a;">groups</span><span>));
+</span><span>    </span><span style="color:#a7adba;">//printf(&quot;convscale %f\n&quot;, scale);
+</span><span>    </span><span style="color:#a7adba;">//scale = .02;
+</span><span>    </span><span style="color:#a7adba;">//for(i = 0; i &lt; c*n*size*size; ++i) l.weights[i] = scale*rand_uniform(-1, 1);
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(i = </span><span style="color:#d08770;">0</span><span>; i &lt; l.</span><span style="color:#bf616a;">nweights</span><span>; ++i) l.</span><span style="color:#bf616a;">weights</span><span>[i] = scale*</span><span style="color:#bf616a;">rand_normal</span><span>();
+</span><span>    </span><span style="color:#b48ead;">int</span><span> out_w = </span><span style="color:#bf616a;">convolutional_out_width</span><span>(l);
+</span><span>    </span><span style="color:#b48ead;">int</span><span> out_h = </span><span style="color:#bf616a;">convolutional_out_height</span><span>(l);
+</span><span>    l.</span><span style="color:#bf616a;">out_h </span><span>= out_h;
+</span><span>    l.</span><span style="color:#bf616a;">out_w </span><span>= out_w;
+</span><span>    l.</span><span style="color:#bf616a;">out_c </span><span>= n;
+</span><span>    l.</span><span style="color:#bf616a;">outputs </span><span>= l.</span><span style="color:#bf616a;">out_h </span><span>* l.</span><span style="color:#bf616a;">out_w </span><span>* l.</span><span style="color:#bf616a;">out_c</span><span>;
+</span><span>    l.</span><span style="color:#bf616a;">inputs </span><span>= l.</span><span style="color:#bf616a;">w </span><span>* l.</span><span style="color:#bf616a;">h </span><span>* l.</span><span style="color:#bf616a;">c</span><span>;
+</span><span>
+</span><span>    l.</span><span style="color:#bf616a;">output </span><span>= </span><span style="color:#96b5b4;">calloc</span><span>(l.</span><span style="color:#bf616a;">batch</span><span>*l.</span><span style="color:#bf616a;">outputs</span><span>, sizeof(</span><span style="color:#b48ead;">float</span><span>));
+</span><span>    l.</span><span style="color:#bf616a;">delta  </span><span>= </span><span style="color:#96b5b4;">calloc</span><span>(l.</span><span style="color:#bf616a;">batch</span><span>*l.</span><span style="color:#bf616a;">outputs</span><span>, sizeof(</span><span style="color:#b48ead;">float</span><span>));
+</span><span>
+</span><span>    l.</span><span style="color:#bf616a;">forward </span><span>= forward_convolutional_layer;
+</span><span>    l.</span><span style="color:#bf616a;">backward </span><span>= backward_convolutional_layer;
+</span><span>    l.</span><span style="color:#bf616a;">update </span><span>= update_convolutional_layer;
+</span><span>    </span><span style="color:#b48ead;">if</span><span>(binary){
+</span><span>        l.</span><span style="color:#bf616a;">binary_weights </span><span>= </span><span style="color:#96b5b4;">calloc</span><span>(l.</span><span style="color:#bf616a;">nweights</span><span>, sizeof(</span><span style="color:#b48ead;">float</span><span>));
+</span><span>        l.</span><span style="color:#bf616a;">cweights </span><span>= </span><span style="color:#96b5b4;">calloc</span><span>(l.</span><span style="color:#bf616a;">nweights</span><span>, sizeof(</span><span style="color:#b48ead;">char</span><span>));
+</span><span>        l.</span><span style="color:#bf616a;">scales </span><span>= </span><span style="color:#96b5b4;">calloc</span><span>(n, sizeof(</span><span style="color:#b48ead;">float</span><span>));
+</span><span>    }
+</span><span>    </span><span style="color:#b48ead;">if</span><span>(xnor){
+</span><span>        l.</span><span style="color:#bf616a;">binary_weights </span><span>= </span><span style="color:#96b5b4;">calloc</span><span>(l.</span><span style="color:#bf616a;">nweights</span><span>, sizeof(</span><span style="color:#b48ead;">float</span><span>));
+</span><span>        l.</span><span style="color:#bf616a;">binary_input </span><span>= </span><span style="color:#96b5b4;">calloc</span><span>(l.</span><span style="color:#bf616a;">inputs</span><span>*l.</span><span style="color:#bf616a;">batch</span><span>, sizeof(</span><span style="color:#b48ead;">float</span><span>));
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">if</span><span>(batch_normalize){
+</span><span>        l.</span><span style="color:#bf616a;">scales </span><span>= </span><span style="color:#96b5b4;">calloc</span><span>(n, sizeof(</span><span style="color:#b48ead;">float</span><span>));
+</span><span>        l.</span><span style="color:#bf616a;">scale_updates </span><span>= </span><span style="color:#96b5b4;">calloc</span><span>(n, sizeof(</span><span style="color:#b48ead;">float</span><span>));
+</span><span>        </span><span style="color:#b48ead;">for</span><span>(i = </span><span style="color:#d08770;">0</span><span>; i &lt; n; ++i){
+</span><span>            l.</span><span style="color:#bf616a;">scales</span><span>[i] = </span><span style="color:#d08770;">1</span><span>;
+</span><span>        }
+</span><span>
+</span><span>        l.</span><span style="color:#bf616a;">mean </span><span>= </span><span style="color:#96b5b4;">calloc</span><span>(n, sizeof(</span><span style="color:#b48ead;">float</span><span>));
+</span><span>        l.</span><span style="color:#bf616a;">variance </span><span>= </span><span style="color:#96b5b4;">calloc</span><span>(n, sizeof(</span><span style="color:#b48ead;">float</span><span>));
+</span><span>
+</span><span>        l.</span><span style="color:#bf616a;">mean_delta </span><span>= </span><span style="color:#96b5b4;">calloc</span><span>(n, sizeof(</span><span style="color:#b48ead;">float</span><span>));
+</span><span>        l.</span><span style="color:#bf616a;">variance_delta </span><span>= </span><span style="color:#96b5b4;">calloc</span><span>(n, sizeof(</span><span style="color:#b48ead;">float</span><span>));
+</span><span>
+</span><span>        l.</span><span style="color:#bf616a;">rolling_mean </span><span>= </span><span style="color:#96b5b4;">calloc</span><span>(n, sizeof(</span><span style="color:#b48ead;">float</span><span>));
+</span><span>        l.</span><span style="color:#bf616a;">rolling_variance </span><span>= </span><span style="color:#96b5b4;">calloc</span><span>(n, sizeof(</span><span style="color:#b48ead;">float</span><span>));
+</span><span>        l.</span><span style="color:#bf616a;">x </span><span>= </span><span style="color:#96b5b4;">calloc</span><span>(l.</span><span style="color:#bf616a;">batch</span><span>*l.</span><span style="color:#bf616a;">outputs</span><span>, sizeof(</span><span style="color:#b48ead;">float</span><span>));
+</span><span>        l.</span><span style="color:#bf616a;">x_norm </span><span>= </span><span style="color:#96b5b4;">calloc</span><span>(l.</span><span style="color:#bf616a;">batch</span><span>*l.</span><span style="color:#bf616a;">outputs</span><span>, sizeof(</span><span style="color:#b48ead;">float</span><span>));
+</span><span>    }
+</span><span>    </span><span style="color:#b48ead;">if</span><span>(adam){
+</span><span>        l.</span><span style="color:#bf616a;">m </span><span>= </span><span style="color:#96b5b4;">calloc</span><span>(l.</span><span style="color:#bf616a;">nweights</span><span>, sizeof(</span><span style="color:#b48ead;">float</span><span>));
+</span><span>        l.</span><span style="color:#bf616a;">v </span><span>= </span><span style="color:#96b5b4;">calloc</span><span>(l.</span><span style="color:#bf616a;">nweights</span><span>, sizeof(</span><span style="color:#b48ead;">float</span><span>));
+</span><span>        l.</span><span style="color:#bf616a;">bias_m </span><span>= </span><span style="color:#96b5b4;">calloc</span><span>(n, sizeof(</span><span style="color:#b48ead;">float</span><span>));
+</span><span>        l.</span><span style="color:#bf616a;">scale_m </span><span>= </span><span style="color:#96b5b4;">calloc</span><span>(n, sizeof(</span><span style="color:#b48ead;">float</span><span>));
+</span><span>        l.</span><span style="color:#bf616a;">bias_v </span><span>= </span><span style="color:#96b5b4;">calloc</span><span>(n, sizeof(</span><span style="color:#b48ead;">float</span><span>));
+</span><span>        l.</span><span style="color:#bf616a;">scale_v </span><span>= </span><span style="color:#96b5b4;">calloc</span><span>(n, sizeof(</span><span style="color:#b48ead;">float</span><span>));
+</span><span>    }
+</span><span>
+</span><span style="color:#b48ead;">#ifdef</span><span> GPU
+</span><span>    l.</span><span style="color:#bf616a;">forward_gpu </span><span>= forward_convolutional_layer_gpu;
+</span><span>    l.</span><span style="color:#bf616a;">backward_gpu </span><span>= backward_convolutional_layer_gpu;
+</span><span>    l.</span><span style="color:#bf616a;">update_gpu </span><span>= update_convolutional_layer_gpu;
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">if</span><span>(gpu_index &gt;= </span><span style="color:#d08770;">0</span><span>){
+</span><span>        </span><span style="color:#b48ead;">if </span><span>(adam) {
+</span><span>            l.</span><span style="color:#bf616a;">m_gpu </span><span>= </span><span style="color:#bf616a;">cuda_make_array</span><span>(l.</span><span style="color:#bf616a;">m</span><span>, l.</span><span style="color:#bf616a;">nweights</span><span>);
+</span><span>            l.</span><span style="color:#bf616a;">v_gpu </span><span>= </span><span style="color:#bf616a;">cuda_make_array</span><span>(l.</span><span style="color:#bf616a;">v</span><span>, l.</span><span style="color:#bf616a;">nweights</span><span>);
+</span><span>            l.</span><span style="color:#bf616a;">bias_m_gpu </span><span>= </span><span style="color:#bf616a;">cuda_make_array</span><span>(l.</span><span style="color:#bf616a;">bias_m</span><span>, n);
+</span><span>            l.</span><span style="color:#bf616a;">bias_v_gpu </span><span>= </span><span style="color:#bf616a;">cuda_make_array</span><span>(l.</span><span style="color:#bf616a;">bias_v</span><span>, n);
+</span><span>            l.</span><span style="color:#bf616a;">scale_m_gpu </span><span>= </span><span style="color:#bf616a;">cuda_make_array</span><span>(l.</span><span style="color:#bf616a;">scale_m</span><span>, n);
+</span><span>            l.</span><span style="color:#bf616a;">scale_v_gpu </span><span>= </span><span style="color:#bf616a;">cuda_make_array</span><span>(l.</span><span style="color:#bf616a;">scale_v</span><span>, n);
+</span><span>        }
+</span><span>
+</span><span>        l.</span><span style="color:#bf616a;">weights_gpu </span><span>= </span><span style="color:#bf616a;">cuda_make_array</span><span>(l.</span><span style="color:#bf616a;">weights</span><span>, l.</span><span style="color:#bf616a;">nweights</span><span>);
+</span><span>        l.</span><span style="color:#bf616a;">weight_updates_gpu </span><span>= </span><span style="color:#bf616a;">cuda_make_array</span><span>(l.</span><span style="color:#bf616a;">weight_updates</span><span>, l.</span><span style="color:#bf616a;">nweights</span><span>);
+</span><span>
+</span><span>        l.</span><span style="color:#bf616a;">biases_gpu </span><span>= </span><span style="color:#bf616a;">cuda_make_array</span><span>(l.</span><span style="color:#bf616a;">biases</span><span>, n);
+</span><span>        l.</span><span style="color:#bf616a;">bias_updates_gpu </span><span>= </span><span style="color:#bf616a;">cuda_make_array</span><span>(l.</span><span style="color:#bf616a;">bias_updates</span><span>, n);
+</span><span>
+</span><span>        l.</span><span style="color:#bf616a;">delta_gpu </span><span>= </span><span style="color:#bf616a;">cuda_make_array</span><span>(l.</span><span style="color:#bf616a;">delta</span><span>, l.</span><span style="color:#bf616a;">batch</span><span>*out_h*out_w*n);
+</span><span>        l.</span><span style="color:#bf616a;">output_gpu </span><span>= </span><span style="color:#bf616a;">cuda_make_array</span><span>(l.</span><span style="color:#bf616a;">output</span><span>, l.</span><span style="color:#bf616a;">batch</span><span>*out_h*out_w*n);
+</span><span>
+</span><span>        </span><span style="color:#b48ead;">if</span><span>(binary){
+</span><span>            l.</span><span style="color:#bf616a;">binary_weights_gpu </span><span>= </span><span style="color:#bf616a;">cuda_make_array</span><span>(l.</span><span style="color:#bf616a;">weights</span><span>, l.</span><span style="color:#bf616a;">nweights</span><span>);
+</span><span>        }
+</span><span>        </span><span style="color:#b48ead;">if</span><span>(xnor){
+</span><span>            l.</span><span style="color:#bf616a;">binary_weights_gpu </span><span>= </span><span style="color:#bf616a;">cuda_make_array</span><span>(l.</span><span style="color:#bf616a;">weights</span><span>, l.</span><span style="color:#bf616a;">nweights</span><span>);
+</span><span>            l.</span><span style="color:#bf616a;">binary_input_gpu </span><span>= </span><span style="color:#bf616a;">cuda_make_array</span><span>(</span><span style="color:#d08770;">0</span><span>, l.</span><span style="color:#bf616a;">inputs</span><span>*l.</span><span style="color:#bf616a;">batch</span><span>);
+</span><span>        }
+</span><span>
+</span><span>        </span><span style="color:#b48ead;">if</span><span>(batch_normalize){
+</span><span>            l.</span><span style="color:#bf616a;">mean_gpu </span><span>= </span><span style="color:#bf616a;">cuda_make_array</span><span>(l.</span><span style="color:#bf616a;">mean</span><span>, n);
+</span><span>            l.</span><span style="color:#bf616a;">variance_gpu </span><span>= </span><span style="color:#bf616a;">cuda_make_array</span><span>(l.</span><span style="color:#bf616a;">variance</span><span>, n);
+</span><span>
+</span><span>            l.</span><span style="color:#bf616a;">rolling_mean_gpu </span><span>= </span><span style="color:#bf616a;">cuda_make_array</span><span>(l.</span><span style="color:#bf616a;">mean</span><span>, n);
+</span><span>            l.</span><span style="color:#bf616a;">rolling_variance_gpu </span><span>= </span><span style="color:#bf616a;">cuda_make_array</span><span>(l.</span><span style="color:#bf616a;">variance</span><span>, n);
+</span><span>
+</span><span>            l.</span><span style="color:#bf616a;">mean_delta_gpu </span><span>= </span><span style="color:#bf616a;">cuda_make_array</span><span>(l.</span><span style="color:#bf616a;">mean</span><span>, n);
+</span><span>            l.</span><span style="color:#bf616a;">variance_delta_gpu </span><span>= </span><span style="color:#bf616a;">cuda_make_array</span><span>(l.</span><span style="color:#bf616a;">variance</span><span>, n);
+</span><span>
+</span><span>            l.</span><span style="color:#bf616a;">scales_gpu </span><span>= </span><span style="color:#bf616a;">cuda_make_array</span><span>(l.</span><span style="color:#bf616a;">scales</span><span>, n);
+</span><span>            l.</span><span style="color:#bf616a;">scale_updates_gpu </span><span>= </span><span style="color:#bf616a;">cuda_make_array</span><span>(l.</span><span style="color:#bf616a;">scale_updates</span><span>, n);
+</span><span>
+</span><span>            l.</span><span style="color:#bf616a;">x_gpu </span><span>= </span><span style="color:#bf616a;">cuda_make_array</span><span>(l.</span><span style="color:#bf616a;">output</span><span>, l.</span><span style="color:#bf616a;">batch</span><span>*out_h*out_w*n);
+</span><span>            l.</span><span style="color:#bf616a;">x_norm_gpu </span><span>= </span><span style="color:#bf616a;">cuda_make_array</span><span>(l.</span><span style="color:#bf616a;">output</span><span>, l.</span><span style="color:#bf616a;">batch</span><span>*out_h*out_w*n);
+</span><span>        }
+</span><span style="color:#b48ead;">#ifdef</span><span> CUDNN
+</span><span>        </span><span style="color:#bf616a;">cudnnCreateTensorDescriptor</span><span>(&amp;l.</span><span style="color:#bf616a;">normTensorDesc</span><span>);
+</span><span>        </span><span style="color:#bf616a;">cudnnCreateTensorDescriptor</span><span>(&amp;l.</span><span style="color:#bf616a;">srcTensorDesc</span><span>);
+</span><span>        </span><span style="color:#bf616a;">cudnnCreateTensorDescriptor</span><span>(&amp;l.</span><span style="color:#bf616a;">dstTensorDesc</span><span>);
+</span><span>        </span><span style="color:#bf616a;">cudnnCreateFilterDescriptor</span><span>(&amp;l.</span><span style="color:#bf616a;">weightDesc</span><span>);
+</span><span>        </span><span style="color:#bf616a;">cudnnCreateTensorDescriptor</span><span>(&amp;l.</span><span style="color:#bf616a;">dsrcTensorDesc</span><span>);
+</span><span>        </span><span style="color:#bf616a;">cudnnCreateTensorDescriptor</span><span>(&amp;l.</span><span style="color:#bf616a;">ddstTensorDesc</span><span>);
+</span><span>        </span><span style="color:#bf616a;">cudnnCreateFilterDescriptor</span><span>(&amp;l.</span><span style="color:#bf616a;">dweightDesc</span><span>);
+</span><span>        </span><span style="color:#bf616a;">cudnnCreateConvolutionDescriptor</span><span>(&amp;l.</span><span style="color:#bf616a;">convDesc</span><span>);
+</span><span>        </span><span style="color:#bf616a;">cudnn_convolutional_setup</span><span>(&amp;l);
+</span><span style="color:#b48ead;">#endif
+</span><span>    }
+</span><span style="color:#b48ead;">#endif
+</span><span>    l.</span><span style="color:#bf616a;">workspace_size </span><span>= </span><span style="color:#bf616a;">get_workspace_size</span><span>(l);
+</span><span>    l.</span><span style="color:#bf616a;">activation </span><span>= activation;
+</span><span>
+</span><span>    </span><span style="color:#96b5b4;">fprintf</span><span>(stderr, &quot;</span><span style="color:#a3be8c;">conv  </span><span style="color:#d08770;">%5d %2d</span><span style="color:#a3be8c;"> x</span><span style="color:#d08770;">%2d</span><span style="color:#a3be8c;"> /</span><span style="color:#d08770;">%2d  %4d</span><span style="color:#a3be8c;"> x</span><span style="color:#d08770;">%4d</span><span style="color:#a3be8c;"> x</span><span style="color:#d08770;">%4d</span><span style="color:#a3be8c;">   -&gt;  </span><span style="color:#d08770;">%4d</span><span style="color:#a3be8c;"> x</span><span style="color:#d08770;">%4d</span><span style="color:#a3be8c;"> x</span><span style="color:#d08770;">%4d  %5.3f</span><span style="color:#a3be8c;"> BFLOPs</span><span style="color:#96b5b4;">\n</span><span>&quot;, n, size, size, stride, w, h, c, l.</span><span style="color:#bf616a;">out_w</span><span>, l.</span><span style="color:#bf616a;">out_h</span><span>, l.</span><span style="color:#bf616a;">out_c</span><span>, (</span><span style="color:#d08770;">2.0 </span><span>* l.</span><span style="color:#bf616a;">n </span><span>* l.</span><span style="color:#bf616a;">size</span><span>*l.</span><span style="color:#bf616a;">size</span><span>*l.</span><span style="color:#bf616a;">c</span><span>/l.</span><span style="color:#bf616a;">groups </span><span>* l.</span><span style="color:#bf616a;">out_h</span><span>*l.</span><span style="color:#bf616a;">out_w</span><span>)/</span><span style="color:#d08770;">1000000000.</span><span>);
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">return</span><span> l;
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">denormalize_convolutional_layer</span><span>(convolutional_layer </span><span style="color:#bf616a;">l</span><span>)
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">int</span><span> i, j;
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(i = </span><span style="color:#d08770;">0</span><span>; i &lt; l.</span><span style="color:#bf616a;">n</span><span>; ++i){
+</span><span>        </span><span style="color:#b48ead;">float</span><span> scale = l.</span><span style="color:#bf616a;">scales</span><span>[i]/</span><span style="color:#96b5b4;">sqrt</span><span>(l.</span><span style="color:#bf616a;">rolling_variance</span><span>[i] + </span><span style="color:#d08770;">.00001</span><span>);
+</span><span>        </span><span style="color:#b48ead;">for</span><span>(j = </span><span style="color:#d08770;">0</span><span>; j &lt; l.</span><span style="color:#bf616a;">c</span><span>/l.</span><span style="color:#bf616a;">groups</span><span>*l.</span><span style="color:#bf616a;">size</span><span>*l.</span><span style="color:#bf616a;">size</span><span>; ++j){
+</span><span>            l.</span><span style="color:#bf616a;">weights</span><span>[i*l.</span><span style="color:#bf616a;">c</span><span>/l.</span><span style="color:#bf616a;">groups</span><span>*l.</span><span style="color:#bf616a;">size</span><span>*l.</span><span style="color:#bf616a;">size </span><span>+ j] *= scale;
+</span><span>        }
+</span><span>        l.</span><span style="color:#bf616a;">biases</span><span>[i] -= l.</span><span style="color:#bf616a;">rolling_mean</span><span>[i] * scale;
+</span><span>        l.</span><span style="color:#bf616a;">scales</span><span>[i] = </span><span style="color:#d08770;">1</span><span>;
+</span><span>        l.</span><span style="color:#bf616a;">rolling_mean</span><span>[i] = </span><span style="color:#d08770;">0</span><span>;
+</span><span>        l.</span><span style="color:#bf616a;">rolling_variance</span><span>[i] = </span><span style="color:#d08770;">1</span><span>;
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#a7adba;">/*
+</span><span style="color:#a7adba;">void test_convolutional_layer()
+</span><span style="color:#a7adba;">{
+</span><span style="color:#a7adba;">    convolutional_layer l = make_convolutional_layer(1, 5, 5, 3, 2, 5, 2, 1, LEAKY, 1, 0, 0, 0);
+</span><span style="color:#a7adba;">    l.batch_normalize = 1;
+</span><span style="color:#a7adba;">    float data[] = {1,1,1,1,1,
+</span><span style="color:#a7adba;">        1,1,1,1,1,
+</span><span style="color:#a7adba;">        1,1,1,1,1,
+</span><span style="color:#a7adba;">        1,1,1,1,1,
+</span><span style="color:#a7adba;">        1,1,1,1,1,
+</span><span style="color:#a7adba;">        2,2,2,2,2,
+</span><span style="color:#a7adba;">        2,2,2,2,2,
+</span><span style="color:#a7adba;">        2,2,2,2,2,
+</span><span style="color:#a7adba;">        2,2,2,2,2,
+</span><span style="color:#a7adba;">        2,2,2,2,2,
+</span><span style="color:#a7adba;">        3,3,3,3,3,
+</span><span style="color:#a7adba;">        3,3,3,3,3,
+</span><span style="color:#a7adba;">        3,3,3,3,3,
+</span><span style="color:#a7adba;">        3,3,3,3,3,
+</span><span style="color:#a7adba;">        3,3,3,3,3};
+</span><span style="color:#a7adba;">    //net.input = data;
+</span><span style="color:#a7adba;">    //forward_convolutional_layer(l);
+</span><span style="color:#a7adba;">}
+</span><span style="color:#a7adba;">*/
+</span><span>
+</span><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">resize_convolutional_layer</span><span>(convolutional_layer *</span><span style="color:#bf616a;">l</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">w</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">h</span><span>)
+</span><span>{
+</span><span>    l-&gt;w = w;
+</span><span>    l-&gt;h = h;
+</span><span>    </span><span style="color:#b48ead;">int</span><span> out_w = </span><span style="color:#bf616a;">convolutional_out_width</span><span>(*l);
+</span><span>    </span><span style="color:#b48ead;">int</span><span> out_h = </span><span style="color:#bf616a;">convolutional_out_height</span><span>(*l);
+</span><span>
+</span><span>    l-&gt;out_w = out_w;
+</span><span>    l-&gt;out_h = out_h;
+</span><span>
+</span><span>    l-&gt;outputs = l-&gt;out_h * l-&gt;out_w * l-&gt;out_c;
+</span><span>    l-&gt;inputs = l-&gt;w * l-&gt;h * l-&gt;c;
+</span><span>
+</span><span>    l-&gt;output = </span><span style="color:#96b5b4;">realloc</span><span>(l-&gt;output, l-&gt;batch*l-&gt;outputs*sizeof(</span><span style="color:#b48ead;">float</span><span>));
+</span><span>    l-&gt;delta  = </span><span style="color:#96b5b4;">realloc</span><span>(l-&gt;delta,  l-&gt;batch*l-&gt;outputs*sizeof(</span><span style="color:#b48ead;">float</span><span>));
+</span><span>    </span><span style="color:#b48ead;">if</span><span>(l-&gt;batch_normalize){
+</span><span>        l-&gt;x = </span><span style="color:#96b5b4;">realloc</span><span>(l-&gt;x, l-&gt;batch*l-&gt;outputs*sizeof(</span><span style="color:#b48ead;">float</span><span>));
+</span><span>        l-&gt;x_norm  = </span><span style="color:#96b5b4;">realloc</span><span>(l-&gt;x_norm, l-&gt;batch*l-&gt;outputs*sizeof(</span><span style="color:#b48ead;">float</span><span>));
+</span><span>    }
+</span><span>
+</span><span style="color:#b48ead;">#ifdef</span><span> GPU
+</span><span>    </span><span style="color:#bf616a;">cuda_free</span><span>(l-&gt;delta_gpu);
+</span><span>    </span><span style="color:#bf616a;">cuda_free</span><span>(l-&gt;output_gpu);
+</span><span>
+</span><span>    l-&gt;delta_gpu =  </span><span style="color:#bf616a;">cuda_make_array</span><span>(l-&gt;delta,  l-&gt;batch*l-&gt;outputs);
+</span><span>    l-&gt;output_gpu = </span><span style="color:#bf616a;">cuda_make_array</span><span>(l-&gt;output, l-&gt;batch*l-&gt;outputs);
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">if</span><span>(l-&gt;batch_normalize){
+</span><span>        </span><span style="color:#bf616a;">cuda_free</span><span>(l-&gt;x_gpu);
+</span><span>        </span><span style="color:#bf616a;">cuda_free</span><span>(l-&gt;x_norm_gpu);
+</span><span>
+</span><span>        l-&gt;x_gpu = </span><span style="color:#bf616a;">cuda_make_array</span><span>(l-&gt;output, l-&gt;batch*l-&gt;outputs);
+</span><span>        l-&gt;x_norm_gpu = </span><span style="color:#bf616a;">cuda_make_array</span><span>(l-&gt;output, l-&gt;batch*l-&gt;outputs);
+</span><span>    }
+</span><span style="color:#b48ead;">#ifdef</span><span> CUDNN
+</span><span>    </span><span style="color:#bf616a;">cudnn_convolutional_setup</span><span>(l);
+</span><span style="color:#b48ead;">#endif
+</span><span style="color:#b48ead;">#endif
+</span><span>    l-&gt;workspace_size = </span><span style="color:#bf616a;">get_workspace_size</span><span>(*l);
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">add_bias</span><span>(</span><span style="color:#b48ead;">float </span><span>*</span><span style="color:#bf616a;">output</span><span>, </span><span style="color:#b48ead;">float </span><span>*</span><span style="color:#bf616a;">biases</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">batch</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">n</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">size</span><span>)
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">int</span><span> i,j,b;
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(b = </span><span style="color:#d08770;">0</span><span>; b &lt; batch; ++b){
+</span><span>        </span><span style="color:#b48ead;">for</span><span>(i = </span><span style="color:#d08770;">0</span><span>; i &lt; n; ++i){
+</span><span>            </span><span style="color:#b48ead;">for</span><span>(j = </span><span style="color:#d08770;">0</span><span>; j &lt; size; ++j){
+</span><span>                output[(b*n + i)*size + j] += biases[i];
+</span><span>            }
+</span><span>        }
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">scale_bias</span><span>(</span><span style="color:#b48ead;">float </span><span>*</span><span style="color:#bf616a;">output</span><span>, </span><span style="color:#b48ead;">float </span><span>*</span><span style="color:#bf616a;">scales</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">batch</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">n</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">size</span><span>)
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">int</span><span> i,j,b;
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(b = </span><span style="color:#d08770;">0</span><span>; b &lt; batch; ++b){
+</span><span>        </span><span style="color:#b48ead;">for</span><span>(i = </span><span style="color:#d08770;">0</span><span>; i &lt; n; ++i){
+</span><span>            </span><span style="color:#b48ead;">for</span><span>(j = </span><span style="color:#d08770;">0</span><span>; j &lt; size; ++j){
+</span><span>                output[(b*n + i)*size + j] *= scales[i];
+</span><span>            }
+</span><span>        }
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">backward_bias</span><span>(</span><span style="color:#b48ead;">float </span><span>*</span><span style="color:#bf616a;">bias_updates</span><span>, </span><span style="color:#b48ead;">float </span><span>*</span><span style="color:#bf616a;">delta</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">batch</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">n</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">size</span><span>)
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">int</span><span> i,b;
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(b = </span><span style="color:#d08770;">0</span><span>; b &lt; batch; ++b){
+</span><span>        </span><span style="color:#b48ead;">for</span><span>(i = </span><span style="color:#d08770;">0</span><span>; i &lt; n; ++i){
+</span><span>            bias_updates[i] += </span><span style="color:#bf616a;">sum_array</span><span>(delta+size*(i+b*n), size);
+</span><span>        }
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">forward_convolutional_layer</span><span>(convolutional_layer </span><span style="color:#bf616a;">l</span><span>, network </span><span style="color:#bf616a;">net</span><span>)
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">int</span><span> i, j;
+</span><span>
+</span><span>    </span><span style="color:#bf616a;">fill_cpu</span><span>(l.</span><span style="color:#bf616a;">outputs</span><span>*l.</span><span style="color:#bf616a;">batch</span><span>, </span><span style="color:#d08770;">0</span><span>, l.</span><span style="color:#bf616a;">output</span><span>, </span><span style="color:#d08770;">1</span><span>);
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">if</span><span>(l.</span><span style="color:#bf616a;">xnor</span><span>){
+</span><span>        </span><span style="color:#bf616a;">binarize_weights</span><span>(l.</span><span style="color:#bf616a;">weights</span><span>, l.</span><span style="color:#bf616a;">n</span><span>, l.</span><span style="color:#bf616a;">c</span><span>/l.</span><span style="color:#bf616a;">groups</span><span>*l.</span><span style="color:#bf616a;">size</span><span>*l.</span><span style="color:#bf616a;">size</span><span>, l.</span><span style="color:#bf616a;">binary_weights</span><span>);
+</span><span>        </span><span style="color:#bf616a;">swap_binary</span><span>(&amp;l);
+</span><span>        </span><span style="color:#bf616a;">binarize_cpu</span><span>(net.</span><span style="color:#bf616a;">input</span><span>, l.</span><span style="color:#bf616a;">c</span><span>*l.</span><span style="color:#bf616a;">h</span><span>*l.</span><span style="color:#bf616a;">w</span><span>*l.</span><span style="color:#bf616a;">batch</span><span>, l.</span><span style="color:#bf616a;">binary_input</span><span>);
+</span><span>        net.</span><span style="color:#bf616a;">input </span><span>= l.</span><span style="color:#bf616a;">binary_input</span><span>;
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">int</span><span> m = l.</span><span style="color:#bf616a;">n</span><span>/l.</span><span style="color:#bf616a;">groups</span><span>;
+</span><span>    </span><span style="color:#b48ead;">int</span><span> k = l.</span><span style="color:#bf616a;">size</span><span>*l.</span><span style="color:#bf616a;">size</span><span>*l.</span><span style="color:#bf616a;">c</span><span>/l.</span><span style="color:#bf616a;">groups</span><span>;
+</span><span>    </span><span style="color:#b48ead;">int</span><span> n = l.</span><span style="color:#bf616a;">out_w</span><span>*l.</span><span style="color:#bf616a;">out_h</span><span>;
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(i = </span><span style="color:#d08770;">0</span><span>; i &lt; l.</span><span style="color:#bf616a;">batch</span><span>; ++i){
+</span><span>        </span><span style="color:#b48ead;">for</span><span>(j = </span><span style="color:#d08770;">0</span><span>; j &lt; l.</span><span style="color:#bf616a;">groups</span><span>; ++j){
+</span><span>            </span><span style="color:#b48ead;">float </span><span>*a = l.</span><span style="color:#bf616a;">weights </span><span>+ j*l.</span><span style="color:#bf616a;">nweights</span><span>/l.</span><span style="color:#bf616a;">groups</span><span>;
+</span><span>            </span><span style="color:#b48ead;">float </span><span>*b = net.</span><span style="color:#bf616a;">workspace</span><span>;
+</span><span>            </span><span style="color:#b48ead;">float </span><span>*c = l.</span><span style="color:#bf616a;">output </span><span>+ (i*l.</span><span style="color:#bf616a;">groups </span><span>+ j)*n*m;
+</span><span>            </span><span style="color:#b48ead;">float </span><span>*im =  net.</span><span style="color:#bf616a;">input </span><span>+ (i*l.</span><span style="color:#bf616a;">groups </span><span>+ j)*l.</span><span style="color:#bf616a;">c</span><span>/l.</span><span style="color:#bf616a;">groups</span><span>*l.</span><span style="color:#bf616a;">h</span><span>*l.</span><span style="color:#bf616a;">w</span><span>;
+</span><span>
+</span><span>            </span><span style="color:#b48ead;">if </span><span>(l.</span><span style="color:#bf616a;">size </span><span>== </span><span style="color:#d08770;">1</span><span>) {
+</span><span>                b = im;
+</span><span>            } </span><span style="color:#b48ead;">else </span><span>{
+</span><span>                </span><span style="color:#bf616a;">im2col_cpu</span><span>(im, l.</span><span style="color:#bf616a;">c</span><span>/l.</span><span style="color:#bf616a;">groups</span><span>, l.</span><span style="color:#bf616a;">h</span><span>, l.</span><span style="color:#bf616a;">w</span><span>, l.</span><span style="color:#bf616a;">size</span><span>, l.</span><span style="color:#bf616a;">stride</span><span>, l.</span><span style="color:#bf616a;">pad</span><span>, b);
+</span><span>            }
+</span><span>            </span><span style="color:#bf616a;">gemm</span><span>(</span><span style="color:#d08770;">0</span><span>,</span><span style="color:#d08770;">0</span><span>,m,n,k,</span><span style="color:#d08770;">1</span><span>,a,k,b,n,</span><span style="color:#d08770;">1</span><span>,c,n);
+</span><span>        }
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">if</span><span>(l.</span><span style="color:#bf616a;">batch_normalize</span><span>){
+</span><span>        </span><span style="color:#bf616a;">forward_batchnorm_layer</span><span>(l, net);
+</span><span>    } </span><span style="color:#b48ead;">else </span><span>{
+</span><span>        </span><span style="color:#bf616a;">add_bias</span><span>(l.</span><span style="color:#bf616a;">output</span><span>, l.</span><span style="color:#bf616a;">biases</span><span>, l.</span><span style="color:#bf616a;">batch</span><span>, l.</span><span style="color:#bf616a;">n</span><span>, l.</span><span style="color:#bf616a;">out_h</span><span>*l.</span><span style="color:#bf616a;">out_w</span><span>);
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#bf616a;">activate_array</span><span>(l.</span><span style="color:#bf616a;">output</span><span>, l.</span><span style="color:#bf616a;">outputs</span><span>*l.</span><span style="color:#bf616a;">batch</span><span>, l.</span><span style="color:#bf616a;">activation</span><span>);
+</span><span>    </span><span style="color:#b48ead;">if</span><span>(l.</span><span style="color:#bf616a;">binary </span><span>|| l.</span><span style="color:#bf616a;">xnor</span><span>) </span><span style="color:#bf616a;">swap_binary</span><span>(&amp;l);
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">backward_convolutional_layer</span><span>(convolutional_layer </span><span style="color:#bf616a;">l</span><span>, network </span><span style="color:#bf616a;">net</span><span>)
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">int</span><span> i, j;
+</span><span>    </span><span style="color:#b48ead;">int</span><span> m = l.</span><span style="color:#bf616a;">n</span><span>/l.</span><span style="color:#bf616a;">groups</span><span>;
+</span><span>    </span><span style="color:#b48ead;">int</span><span> n = l.</span><span style="color:#bf616a;">size</span><span>*l.</span><span style="color:#bf616a;">size</span><span>*l.</span><span style="color:#bf616a;">c</span><span>/l.</span><span style="color:#bf616a;">groups</span><span>;
+</span><span>    </span><span style="color:#b48ead;">int</span><span> k = l.</span><span style="color:#bf616a;">out_w</span><span>*l.</span><span style="color:#bf616a;">out_h</span><span>;
+</span><span>
+</span><span>    </span><span style="color:#bf616a;">gradient_array</span><span>(l.</span><span style="color:#bf616a;">output</span><span>, l.</span><span style="color:#bf616a;">outputs</span><span>*l.</span><span style="color:#bf616a;">batch</span><span>, l.</span><span style="color:#bf616a;">activation</span><span>, l.</span><span style="color:#bf616a;">delta</span><span>);
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">if</span><span>(l.</span><span style="color:#bf616a;">batch_normalize</span><span>){
+</span><span>        </span><span style="color:#bf616a;">backward_batchnorm_layer</span><span>(l, net);
+</span><span>    } </span><span style="color:#b48ead;">else </span><span>{
+</span><span>        </span><span style="color:#bf616a;">backward_bias</span><span>(l.</span><span style="color:#bf616a;">bias_updates</span><span>, l.</span><span style="color:#bf616a;">delta</span><span>, l.</span><span style="color:#bf616a;">batch</span><span>, l.</span><span style="color:#bf616a;">n</span><span>, k);
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(i = </span><span style="color:#d08770;">0</span><span>; i &lt; l.</span><span style="color:#bf616a;">batch</span><span>; ++i){
+</span><span>        </span><span style="color:#b48ead;">for</span><span>(j = </span><span style="color:#d08770;">0</span><span>; j &lt; l.</span><span style="color:#bf616a;">groups</span><span>; ++j){
+</span><span>            </span><span style="color:#b48ead;">float </span><span>*a = l.</span><span style="color:#bf616a;">delta </span><span>+ (i*l.</span><span style="color:#bf616a;">groups </span><span>+ j)*m*k;
+</span><span>            </span><span style="color:#b48ead;">float </span><span>*b = net.</span><span style="color:#bf616a;">workspace</span><span>;
+</span><span>            </span><span style="color:#b48ead;">float </span><span>*c = l.</span><span style="color:#bf616a;">weight_updates </span><span>+ j*l.</span><span style="color:#bf616a;">nweights</span><span>/l.</span><span style="color:#bf616a;">groups</span><span>;
+</span><span>
+</span><span>            </span><span style="color:#b48ead;">float </span><span>*im  = net.</span><span style="color:#bf616a;">input </span><span>+ (i*l.</span><span style="color:#bf616a;">groups </span><span>+ j)*l.</span><span style="color:#bf616a;">c</span><span>/l.</span><span style="color:#bf616a;">groups</span><span>*l.</span><span style="color:#bf616a;">h</span><span>*l.</span><span style="color:#bf616a;">w</span><span>;
+</span><span>            </span><span style="color:#b48ead;">float </span><span>*imd = net.</span><span style="color:#bf616a;">delta </span><span>+ (i*l.</span><span style="color:#bf616a;">groups </span><span>+ j)*l.</span><span style="color:#bf616a;">c</span><span>/l.</span><span style="color:#bf616a;">groups</span><span>*l.</span><span style="color:#bf616a;">h</span><span>*l.</span><span style="color:#bf616a;">w</span><span>;
+</span><span>
+</span><span>            </span><span style="color:#b48ead;">if</span><span>(l.</span><span style="color:#bf616a;">size </span><span>== </span><span style="color:#d08770;">1</span><span>){
+</span><span>                b = im;
+</span><span>            } </span><span style="color:#b48ead;">else </span><span>{
+</span><span>                </span><span style="color:#bf616a;">im2col_cpu</span><span>(im, l.</span><span style="color:#bf616a;">c</span><span>/l.</span><span style="color:#bf616a;">groups</span><span>, l.</span><span style="color:#bf616a;">h</span><span>, l.</span><span style="color:#bf616a;">w</span><span>, 
+</span><span>                        l.</span><span style="color:#bf616a;">size</span><span>, l.</span><span style="color:#bf616a;">stride</span><span>, l.</span><span style="color:#bf616a;">pad</span><span>, b);
+</span><span>            }
+</span><span>
+</span><span>            </span><span style="color:#bf616a;">gemm</span><span>(</span><span style="color:#d08770;">0</span><span>,</span><span style="color:#d08770;">1</span><span>,m,n,k,</span><span style="color:#d08770;">1</span><span>,a,k,b,k,</span><span style="color:#d08770;">1</span><span>,c,n);
+</span><span>
+</span><span>            </span><span style="color:#b48ead;">if </span><span>(net.</span><span style="color:#bf616a;">delta</span><span>) {
+</span><span>                a = l.</span><span style="color:#bf616a;">weights </span><span>+ j*l.</span><span style="color:#bf616a;">nweights</span><span>/l.</span><span style="color:#bf616a;">groups</span><span>;
+</span><span>                b = l.</span><span style="color:#bf616a;">delta </span><span>+ (i*l.</span><span style="color:#bf616a;">groups </span><span>+ j)*m*k;
+</span><span>                c = net.</span><span style="color:#bf616a;">workspace</span><span>;
+</span><span>                </span><span style="color:#b48ead;">if </span><span>(l.</span><span style="color:#bf616a;">size </span><span>== </span><span style="color:#d08770;">1</span><span>) {
+</span><span>                    c = imd;
+</span><span>                }
+</span><span>
+</span><span>                </span><span style="color:#bf616a;">gemm</span><span>(</span><span style="color:#d08770;">1</span><span>,</span><span style="color:#d08770;">0</span><span>,n,k,m,</span><span style="color:#d08770;">1</span><span>,a,n,b,k,</span><span style="color:#d08770;">0</span><span>,c,k);
+</span><span>
+</span><span>                </span><span style="color:#b48ead;">if </span><span>(l.</span><span style="color:#bf616a;">size </span><span>!= </span><span style="color:#d08770;">1</span><span>) {
+</span><span>                    </span><span style="color:#bf616a;">col2im_cpu</span><span>(net.</span><span style="color:#bf616a;">workspace</span><span>, l.</span><span style="color:#bf616a;">c</span><span>/l.</span><span style="color:#bf616a;">groups</span><span>, l.</span><span style="color:#bf616a;">h</span><span>, l.</span><span style="color:#bf616a;">w</span><span>, l.</span><span style="color:#bf616a;">size</span><span>, l.</span><span style="color:#bf616a;">stride</span><span>, l.</span><span style="color:#bf616a;">pad</span><span>, imd);
+</span><span>                }
+</span><span>            }
+</span><span>        }
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">update_convolutional_layer</span><span>(convolutional_layer </span><span style="color:#bf616a;">l</span><span>, update_args </span><span style="color:#bf616a;">a</span><span>)
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">float</span><span> learning_rate = a.</span><span style="color:#bf616a;">learning_rate</span><span>*l.</span><span style="color:#bf616a;">learning_rate_scale</span><span>;
+</span><span>    </span><span style="color:#b48ead;">float</span><span> momentum = a.</span><span style="color:#bf616a;">momentum</span><span>;
+</span><span>    </span><span style="color:#b48ead;">float</span><span> decay = a.</span><span style="color:#bf616a;">decay</span><span>;
+</span><span>    </span><span style="color:#b48ead;">int</span><span> batch = a.</span><span style="color:#bf616a;">batch</span><span>;
+</span><span>
+</span><span>    </span><span style="color:#bf616a;">axpy_cpu</span><span>(l.</span><span style="color:#bf616a;">n</span><span>, learning_rate/batch, l.</span><span style="color:#bf616a;">bias_updates</span><span>, </span><span style="color:#d08770;">1</span><span>, l.</span><span style="color:#bf616a;">biases</span><span>, </span><span style="color:#d08770;">1</span><span>);
+</span><span>    </span><span style="color:#bf616a;">scal_cpu</span><span>(l.</span><span style="color:#bf616a;">n</span><span>, momentum, l.</span><span style="color:#bf616a;">bias_updates</span><span>, </span><span style="color:#d08770;">1</span><span>);
+</span><span>
+</span><span>    </span><span style="color:#b48ead;">if</span><span>(l.</span><span style="color:#bf616a;">scales</span><span>){
+</span><span>        </span><span style="color:#bf616a;">axpy_cpu</span><span>(l.</span><span style="color:#bf616a;">n</span><span>, learning_rate/batch, l.</span><span style="color:#bf616a;">scale_updates</span><span>, </span><span style="color:#d08770;">1</span><span>, l.</span><span style="color:#bf616a;">scales</span><span>, </span><span style="color:#d08770;">1</span><span>);
+</span><span>        </span><span style="color:#bf616a;">scal_cpu</span><span>(l.</span><span style="color:#bf616a;">n</span><span>, momentum, l.</span><span style="color:#bf616a;">scale_updates</span><span>, </span><span style="color:#d08770;">1</span><span>);
+</span><span>    }
+</span><span>
+</span><span>    </span><span style="color:#bf616a;">axpy_cpu</span><span>(l.</span><span style="color:#bf616a;">nweights</span><span>, -decay*batch, l.</span><span style="color:#bf616a;">weights</span><span>, </span><span style="color:#d08770;">1</span><span>, l.</span><span style="color:#bf616a;">weight_updates</span><span>, </span><span style="color:#d08770;">1</span><span>);
+</span><span>    </span><span style="color:#bf616a;">axpy_cpu</span><span>(l.</span><span style="color:#bf616a;">nweights</span><span>, learning_rate/batch, l.</span><span style="color:#bf616a;">weight_updates</span><span>, </span><span style="color:#d08770;">1</span><span>, l.</span><span style="color:#bf616a;">weights</span><span>, </span><span style="color:#d08770;">1</span><span>);
+</span><span>    </span><span style="color:#bf616a;">scal_cpu</span><span>(l.</span><span style="color:#bf616a;">nweights</span><span>, momentum, l.</span><span style="color:#bf616a;">weight_updates</span><span>, </span><span style="color:#d08770;">1</span><span>);
+</span><span>}
+</span><span>
+</span><span>
+</span><span>image </span><span style="color:#8fa1b3;">get_convolutional_weight</span><span>(convolutional_layer </span><span style="color:#bf616a;">l</span><span>, </span><span style="color:#b48ead;">int </span><span style="color:#bf616a;">i</span><span>)
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">int</span><span> h = l.</span><span style="color:#bf616a;">size</span><span>;
+</span><span>    </span><span style="color:#b48ead;">int</span><span> w = l.</span><span style="color:#bf616a;">size</span><span>;
+</span><span>    </span><span style="color:#b48ead;">int</span><span> c = l.</span><span style="color:#bf616a;">c</span><span>/l.</span><span style="color:#bf616a;">groups</span><span>;
+</span><span>    </span><span style="color:#b48ead;">return </span><span style="color:#bf616a;">float_to_image</span><span>(w,h,c,l.</span><span style="color:#bf616a;">weights</span><span>+i*h*w*c);
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">rgbgr_weights</span><span>(convolutional_layer </span><span style="color:#bf616a;">l</span><span>)
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">int</span><span> i;
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(i = </span><span style="color:#d08770;">0</span><span>; i &lt; l.</span><span style="color:#bf616a;">n</span><span>; ++i){
+</span><span>        image im = </span><span style="color:#bf616a;">get_convolutional_weight</span><span>(l, i);
+</span><span>        </span><span style="color:#b48ead;">if </span><span>(im.</span><span style="color:#bf616a;">c </span><span>== </span><span style="color:#d08770;">3</span><span>) {
+</span><span>            </span><span style="color:#bf616a;">rgbgr_image</span><span>(im);
+</span><span>        }
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span style="color:#b48ead;">void </span><span style="color:#8fa1b3;">rescale_weights</span><span>(convolutional_layer </span><span style="color:#bf616a;">l</span><span>, </span><span style="color:#b48ead;">float </span><span style="color:#bf616a;">scale</span><span>, </span><span style="color:#b48ead;">float </span><span style="color:#bf616a;">trans</span><span>)
+</span><span>{
+</span><span>    </span><span style="color:#b48ead;">int</span><span> i;
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(i = </span><span style="color:#d08770;">0</span><span>; i &lt; l.</span><span style="color:#bf616a;">n</span><span>; ++i){
+</span><span>        image im = </span><span style="color:#bf616a;">get_convolutional_weight</span><span>(l, i);
+</span><span>        </span><span style="color:#b48ead;">if </span><span>(im.</span><span style="color:#bf616a;">c </span><span>== </span><span style="color:#d08770;">3</span><span>) {
+</span><span>            </span><span style="color:#bf616a;">scale_image</span><span>(im, scale);
+</span><span>            </span><span style="color:#b48ead;">float</span><span> sum = </span><span style="color:#bf616a;">sum_array</span><span>(im.</span><span style="color:#bf616a;">data</span><span>, im.</span><span style="color:#bf616a;">w</span><span>*im.</span><span style="color:#bf616a;">h</span><span>*im.</span><span style="color:#bf616a;">c</span><span>);
+</span><span>            l.</span><span style="color:#bf616a;">biases</span><span>[i] += sum*trans;
+</span><span>        }
+</span><span>    }
+</span><span>}
+</span><span>
+</span><span>image *</span><span style="color:#8fa1b3;">get_weights</span><span>(convolutional_layer </span><span style="color:#bf616a;">l</span><span>)
+</span><span>{
+</span><span>    image *weights = </span><span style="color:#96b5b4;">calloc</span><span>(l.</span><span style="color:#bf616a;">n</span><span>, sizeof(image));
+</span><span>    </span><span style="color:#b48ead;">int</span><span> i;
+</span><span>    </span><span style="color:#b48ead;">for</span><span>(i = </span><span style="color:#d08770;">0</span><span>; i &lt; l.</span><span style="color:#bf616a;">n</span><span>; ++i){
+</span><span>        weights[i] = </span><span style="color:#bf616a;">copy_image</span><span>(</span><span style="color:#bf616a;">get_convolutional_weight</span><span>(l, i));
+</span><span>        </span><span style="color:#bf616a;">normalize_image</span><span>(weights[i]);
+</span><span>        </span><span style="color:#a7adba;">/*
+</span><span style="color:#a7adba;">           char buff[256];
+</span><span style="color:#a7adba;">           sprintf(buff, &quot;filter%d&quot;, i);
+</span><span style="color:#a7adba;">           save_image(weights[i], buff);
+</span><span style="color:#a7adba;">         */
+</span><span>    }
+</span><span>    </span><span style="color:#a7adba;">//error(&quot;hey&quot;);
+</span><span>    </span><span style="color:#b48ead;">return</span><span> weights;
+</span><span>}
+</span><span>
+</span><span>image *</span><span style="color:#8fa1b3;">visualize_convolutional_layer</span><span>(convolutional_layer </span><span style="color:#bf616a;">l</span><span>, </span><span style="color:#b48ead;">char </span><span>*</span><span style="color:#bf616a;">window</span><span>, image *</span><span style="color:#bf616a;">prev_weights</span><span>)
+</span><span>{
+</span><span>    image *single_weights = </span><span style="color:#bf616a;">get_weights</span><span>(l);
+</span><span>    </span><span style="color:#bf616a;">show_images</span><span>(single_weights, l.</span><span style="color:#bf616a;">n</span><span>, window);
+</span><span>
+</span><span>    image delta = </span><span style="color:#bf616a;">get_convolutional_image</span><span>(l);
+</span><span>    image dc = </span><span style="color:#bf616a;">collapse_image_layers</span><span>(delta, </span><span style="color:#d08770;">1</span><span>);
+</span><span>    </span><span style="color:#b48ead;">char</span><span> buff[</span><span style="color:#d08770;">256</span><span>];
+</span><span>    </span><span style="color:#96b5b4;">sprintf</span><span>(buff, &quot;</span><span style="color:#d08770;">%s</span><span style="color:#a3be8c;">: Output</span><span>&quot;, window);
+</span><span>    </span><span style="color:#a7adba;">//show_image(dc, buff);
+</span><span>    </span><span style="color:#a7adba;">//save_image(dc, buff);
+</span><span>    </span><span style="color:#bf616a;">free_image</span><span>(dc);
+</span><span>    </span><span style="color:#b48ead;">return</span><span> single_weights;
+</span><span>}
+</span><span>
+</span></code></pre>
+<ul>
+<li>修改<code>/src/gemm.c</code>中的<code>cudaThreadSynchronize</code>为<code>cudaDeviceSynchronize</code></li>
+<li>Makefile中添加,并删除掉低版本的信息</li>
+</ul>
+<pre data-lang="shell" style="background-color:#eff1f5;color:#4f5b66;" class="language-shell "><code class="language-shell" data-lang="shell"><span>-gencode arch=compute_70,code=[sm_70,compute_70] \
+</span><span>-gencode arch=compute_75,code=[sm_75,compute_75] \
+</span><span>-gencode arch=compute_86,code=[sm_86,compute_86]
+</span></code></pre>
+<p>最后，用<code>make</code>命令编译</p>
+<h4 id="3-bian-yi-chu-cuo">3、编译出错</h4>
+<p><code>/bin/sh: 1: nvcc: not found </code>
+sudo </p>
+<p>修改<code>Makefile</code>中<code>nvcc</code>的路径</p>
+<pre data-lang="shell" style="background-color:#eff1f5;color:#4f5b66;" class="language-shell "><code class="language-shell" data-lang="shell"><span>NVCC=/usr/local/cuda/bin/nvcc
+</span></code></pre>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // 清空侧边栏目录列表
+            var headings = $('#toc').empty();
+            var count = 0;
+            $(document.body).find("h1, h2, h3, h4, h5, h6").each(function() {
+                var title = $(this).text();
+                var id = $(this).attr('id');
+                var listItem = '<li><a href="#' + id + '">' + title + '</a></li>';
+                
+                if (count >= 1) {
+                    headings.append(listItem);
+                }
+                count++; // 增加计数器
+            });
+
+            // 如果目录列表为空，则不显示侧边栏
+            if (headings.is(':empty')) {
+                $('#sidebar').hide(); // 隐藏侧边栏
+            } else {
+                // 如果目录不为空，添加目录标题并显示侧边栏
+                headings.prepend('<h2>文章目录</h2>');
+                $('#sidebar').show(); // 显示侧边栏
+            }
+        });
+    </script>
+
+    
+
+                </div>
+            </div>
+
+            <div id="gitalk-container"></div>
+            <script>    
+            const gitalk = new Gitalk({
+              clientID: 'f73599b3b06fe641455a', //'GitHub Application Client ID',
+              clientSecret: '99686ea14b4603409e0c159cfd4fad2afd87a1a5', //'GitHub Application Client Secret',
+              repo: 'King-Key.github.io',  //'GitHub repo',      // The repository of store comments,
+              owner: 'King-Key', //'GitHub repo owner',
+              admin: ['King-Key'], //['GitHub repo owner and collaborators, only these guys can initialize github issues'],
+              id: location.pathname,      // Ensure uniqueness and length less than 50
+              distractionFreeMode: false  // Facebook-like distraction free mode
+            })
+            gitalk.render('gitalk-container')
+            </script>
+
+            <div class="prev-link">
+                
+    
+        
+        
+        <a class="previous" href="https://king-key.github.io/Blog/2023/Q1/"><</a>
+    
+
+            </div>
+
+            <div class="next-link">
+                
+    
+        
+        
+        
+        
+            
+            
+            
+        
+            
+            
+            
+        
+            
+            
+            
+        
+            
+            
+            
+        
+    
+
+            </div>
+
+        </div>
+        
+        
+            
+            <script type="text/javascript" src="https://king-key.github.io/elasticlunr.min.js"></script>
+            <script type="text/javascript" src="https://king-key.github.io/search_index.en.js"></script>
+            
+            <script type="text/javascript" src="https://king-key.github.io/book.js"></script>
+        
+
+    </body>
+
+</html>
