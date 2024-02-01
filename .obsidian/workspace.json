@@ -1,0 +1,222 @@
+{
+  "main": {
+    "id": "8b88ac10e35c11a5",
+    "type": "split",
+    "children": [
+      {
+        "id": "427af7fdb25d342e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0319874451619fd9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "content/Blog/2024/Q1/01-hf-torrent/index.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "c79771e9d4747c79",
+    "type": "split",
+    "children": [
+      {
+        "id": "3ea020cd3c7ba43c",
+        "type": "tabs",
+        "dimension": 32.97560975609756,
+        "children": [
+          {
+            "id": "d21010cbe5820435",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {}
+            }
+          }
+        ]
+      },
+      {
+        "id": "63473609f91acc43",
+        "type": "tabs",
+        "dimension": 67.02439024390245,
+        "children": [
+          {
+            "id": "c13ac50324238166",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "a12197300acc4b87",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 285.5
+  },
+  "right": {
+    "id": "fd2843b6a4c6ab1e",
+    "type": "split",
+    "children": [
+      {
+        "id": "158b5f6b9e892431",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2539809dbddeea8e",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "content/Blog/2024/Q1/01-hf-torrent/index.md"
+              }
+            }
+          },
+          {
+            "id": "7e1716a671a2a070",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          },
+          {
+            "id": "f3f7703c06d5a693",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "content/Blog/2024/Q1/01-hf-torrent/index.md",
+                "collapseAll": true,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "186cecca0c56e39a",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "content/Blog/2024/Q1/01-hf-torrent/index.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "3475f6ad0ebe2275",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b0ddea17910f065e",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 294.5
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "graph:查看关系图谱": false,
+      "switcher:打开快速切换": false,
+      "canvas:新建白板": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "workspaces:管理工作区布局": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "obsidian-excalidraw-plugin:新建绘图文件": false
+    }
+  },
+  "active": "0319874451619fd9",
+  "lastOpenFiles": [
+    "public/README.md",
+    "static/README.md",
+    "content/主页/bg.png",
+    "content/主页/self.png",
+    "public/主页/self小.png",
+    "content/主页/self小.png",
+    "public/主页/self.png",
+    "public/主页/bg小.png",
+    "content/主页/bg小.png",
+    "public/robots.txt",
+    "public/404.html",
+    "public/sitemap.xml",
+    "public/Blog/2023/Q1/index.html",
+    "public/Blog/2023/Q2/index.html",
+    "public/Blog/2023/Q1/darknet-yolo/index.html",
+    "public/Blog/2023/Q1/qtan-zhuang-shi-yong/index.html",
+    "public/Blog/2023/Q1/vscodezhong-chuang-jian-markdownmo-ban/index.html",
+    "public/Blog/2023/Q1/hexo-galleryxiang-ce-zhong-pi-liang-tian-jia-zhao-pian/index.html",
+    "public/Blog/2023/Q1/hexo-galleryxiang-ce-zhong-pi-liang-tian-jia-zhao-pian",
+    "content/随笔/2024/2024-01-05.md",
+    "content/随笔/未命名.md",
+    "templates/index.md",
+    "content/随笔/2024/_index.md",
+    "未命名.md",
+    "content/Blog/2024/Q1/未命名.md",
+    "content/Blog/2024/Q1/FastGPT-ChatGLM2-WeChat/index.md",
+    "content/Blog/2024/Q1/LLM中的一些基本概念.md",
+    "content/主页/bazai.jpg",
+    "content/主页/wechat.jpg",
+    "content/主页/self.jpg",
+    "content/主页/_index.md",
+    "README.md",
+    "笔记/12.14.md",
+    "笔记/2024-01-10.md",
+    "hexo-blog/source/_posts/2023/Q2/butterlfy中几个好用的外挂标签.md",
+    "笔记/2024-01-09.md",
+    "笔记/未命名.md",
+    "笔记/01.09.md",
+    "Open-LLMs-lists/README.md",
+    "个人/home.canvas",
+    "Excalidraw/Drawing 2024-01-09 16.51.09.excalidraw.md",
+    "zola-blog/content/随笔/_index.md",
+    "zola-blog/themes/Easydocs/content/templates/feeds/index.md",
+    "zola-blog/themes/Easydocs/content/content/taxonomies.md",
+    "zola-blog/themes/Easydocs/content/content/table-of-contents.md",
+    "zola-blog/themes/Easydocs/content/content/syntax-highlighting.md",
+    "zola-blog/themes/Easydocs/content/content/shortcodes.md"
+  ]
+}

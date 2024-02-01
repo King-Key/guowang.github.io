@@ -1,0 +1,12 @@
+{
+  "readableLineLength": false,
+  "propertiesInDocument": "source",
+  "showLineNumber": true,
+  "promptDelete": false,
+  "strictLineBreaks": true,
+  "showInlineTitle": true,
+  "showUnsupportedFiles": true,
+  "attachmentFolderPath": "./",
+  "newFileLocation": "folder",
+  "newFileFolderPath": "笔记"
+}
