@@ -4,7 +4,7 @@ base_url = "https://king-key.github.io/"
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
 
-ignored_content = ["README.md"] 
+ignored_content = ["README.md,newmd.sh"] 
 
 # Whether to build a search index to be used later on by a JavaScript library
 build_search_index = true
