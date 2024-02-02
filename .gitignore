@@ -1,0 +1,8 @@
+.obsidian/
+content/
+sass/
+static/
+templates/
+newmd.sh
+config.toml
+public/
